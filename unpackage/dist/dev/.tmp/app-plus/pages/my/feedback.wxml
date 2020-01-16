@@ -1,0 +1,1 @@
+<view><view class="form"><text>标题</text><input placeholder="请输入标题"/></view><view class="form"><text>联系方式</text><input type="number" maxlength="11" placeholder="请输入联系方式"/></view><view class="fankui"><text>反馈内容</text><textarea placeholder="请输入反馈内容"></textarea></view><view class="submit">确认反馈</view></view>

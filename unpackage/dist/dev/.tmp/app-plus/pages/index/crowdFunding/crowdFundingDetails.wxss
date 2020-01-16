@@ -1,0 +1,404 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.htaMs {
+  width: 100%;
+  height: 120rpx;
+  background-color: #F77F0C;
+  position: fixed;
+  top: 0;
+  z-index: 99;
+}
+.htaMs .hm-space {
+    height: 30rpx;
+}
+.htaMs .hm-all {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+            align-items: center;
+}
+.htaMs .hm-all .ha-left {
+      width: 10%;
+      height: 90rpx;
+      text-align: center;
+}
+.htaMs .hm-all .ha-left image {
+        width: 20rpx;
+        height: 36rpx;
+        margin-top: 30rpx;
+}
+.htaMs .hm-all .ha-name {
+      width: 80%;
+      height: 90rpx;
+      text-align: center;
+      font-size: 30rpx;
+      color: #FFFFFF;
+      line-height: 100rpx;
+}
+.htaMs .hm-all .ha-right {
+      width: 10%;
+      height: 90rpx;
+}
+.htaMs .hm-all .ha-right image {
+        width: 40rpx;
+        height: 46rpx;
+        margin-top: 30rpx;
+}
+.headSpace {
+  height: 120rpx;
+}
+.userMs {
+  border-bottom: 20rpx solid #F6F6F6;
+}
+.userMs .um-main {
+    width: 92%;
+    margin: 0 auto;
+}
+.userMs .um-main .umm-user {
+      height: 100rpx;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+              align-items: center;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+              justify-content: space-between;
+}
+.userMs .um-main .umm-user .ummu-user {
+        height: 100rpx;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+                align-items: center;
+}
+.userMs .um-main .umm-user .ummu-user image {
+          width: 70rpx;
+          height: 70rpx;
+          border-radius: 50%;
+}
+.userMs .um-main .umm-user .ummu-user text {
+          font-size: 26rpx;
+          margin-left: 20rpx;
+}
+.userMs .um-main .umm-user .ummu-time {
+        font-size: 24rpx;
+        color: #888888;
+}
+.userMs .um-main .umm-info {
+      font-size: 26rpx;
+}
+.userMs .um-main .umm-desc {
+      width: 70%;
+      height: 80rpx;
+      margin: 30rpx auto 30rpx;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+              align-items: center;
+}
+.userMs .um-main .umm-desc .immi-item {
+        width: 33.3%;
+        height: 80rpx;
+        border-right: 2rpx solid #F4F4F1;
+}
+.userMs .um-main .umm-desc .immi-item:nth-child(3) {
+          border-right: none;
+}
+.userMs .um-main .umm-desc .immi-item view {
+          height: 40rpx;
+          line-height: 40rpx;
+          font-size: 26rpx;
+          text-align: center;
+}
+.userMs .um-main .umm-desc .immi-item .imi-top {
+          color: #888888;
+}
+.userMs .um-main .umm-desc .immi-item .imi-bom {
+          color: #F77F0C;
+}
+.userMs .um-main .umm-progress {
+      height: 40rpx;
+      line-height: 40rpx;
+}
+.userMs .um-main .umm-type {
+      height: 60rpx;
+      line-height: 60rpx;
+      text-align: center;
+      font-size: 28rpx;
+      color: #F77F0C;
+}
+.demandDetails {
+  width: 92%;
+  margin: 0 auto;
+}
+.demandDetails .dd-title {
+    height: 90rpx;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+            align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+            justify-content: center;
+}
+.demandDetails .dd-title .dt-icon {
+      height: 90rpx;
+}
+.demandDetails .dd-title .dt-icon image {
+        width: 26rpx;
+        height: 14rpx;
+        margin-top: 38rpx;
+}
+.demandDetails .dd-title .dt-fonts {
+      margin: 0 12rpx 0 12rpx;
+      font-size: 28rpx;
+      font-weight: bold;
+      color: #FF0000;
+}
+.demandDetails .dd-fonts-main {
+    font-size: 26rpx;
+}
+.demandDetails .dd-image-main {
+    margin: 20rpx 0 20rpx 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+            justify-content: space-between;
+    -webkit-flex-wrap: wrap;
+            flex-wrap: wrap;
+}
+.demandDetails .dd-image-main .dim-item {
+      width: 32%;
+      height: 190rpx;
+}
+.demandDetails .dd-image-main .dim-item image {
+        width: 100%;
+        height: 100%;
+        border-radius: 10rpx;
+}
+.btnMs {
+  width: 90%;
+  margin: 50rpx auto 40rpx;
+}
+.supportMs {
+  width: 600rpx;
+  height: 500rpx;
+  background-color: #FFFFFF;
+  border-radius: 16rpx;
+}
+.supportMs .sm-title {
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+    font-size: 28rpx;
+    border-bottom: 1rpx solid #EAEAEA;
+}
+.supportMs .sm-main {
+    border-bottom: 1rpx solid #EAEAEA;
+}
+.supportMs .sm-main .smm-main {
+      width: 90%;
+      height: 200rpx;
+      margin: 0 auto;
+}
+.supportMs .sm-main .smm-main .smmm-title {
+        height: 70rpx;
+        line-height: 70rpx;
+        font-size: 24rpx;
+        color: #888888;
+}
+.supportMs .sm-main .smm-main .smmm-input {
+        height: 130rpx;
+}
+.supportMs .sm-main .smm-main .smmm-input input {
+          width: 100%;
+          height: 100%;
+          font-size: 44rpx;
+}
+.supportMs .sm-tips {
+    width: 90%;
+    margin: 0 auto;
+    height: 60rpx;
+    line-height: 60rpx;
+    font-size: 24rpx;
+    color: #666666;
+}
+.supportMs .btnMs {
+    margin-top: 20rpx;
+}
+.shareMs {
+  height: 360rpx;
+  background-color: #FFFFFF;
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+}
+.shareMs .sm-title {
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+    font-size: 28rpx;
+}
+.shareMs .sm-kinds {
+    width: 400rpx;
+    height: 180rpx;
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+            justify-content: space-between;
+}
+.shareMs .sm-kinds .sk-item {
+      width: 110rpx;
+      height: 120rpx;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+              align-items: center;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+              justify-content: center;
+      -webkit-flex-wrap: wrap;
+              flex-wrap: wrap;
+}
+.shareMs .sm-kinds .sk-item .si-icon {
+        height: 70rpx;
+}
+.shareMs .sm-kinds .sk-item .si-icon image {
+          width: 70rpx;
+          height: 70rpx;
+}
+.shareMs .sm-kinds .sk-item .si-name {
+        height: 50rpx;
+        line-height: 50rpx;
+        text-align: center;
+        font-size: 24rpx;
+}
+.shareMs .sm-bom {
+    width: 750rpx;
+    height: 90rpx;
+    border: 1rpx solid #EAEAEA;
+    line-height: 90rpx;
+    text-align: center;
+    font-size: 26rpx;
+}
+.payMain {
+  height: 600rpx;
+  background-color: #FFFFFF;
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+}
+.payMain .pm-title {
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+    font-size: 28rpx;
+}
+.payMain .pm-price {
+    height: 200rpx;
+    text-align: center;
+    line-height: 180rpx;
+    font-size: 30rpx;
+    border-bottom: 1rpx solid #F6F6F6;
+}
+.payMain .pm-price .pp-price {
+      font-size: 60rpx;
+      font-weight: bold;
+}
+.payMain .pm-pay-item {
+    border-bottom: 1rpx solid #F6F6F6;
+}
+.payMain .pm-pay-item .ppi-main {
+      width: 90%;
+      height: 100rpx;
+      margin: 0 auto;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+              align-items: center;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+              justify-content: space-between;
+}
+.payMain .pm-pay-item .ppi-main .pm-left {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+                align-items: center;
+}
+.payMain .pm-pay-item .ppi-main .pm-left .pl-icon {
+          height: 100rpx;
+}
+.payMain .pm-pay-item .ppi-main .pm-left .pl-icon image {
+            width: 60rpx;
+            height: 60rpx;
+            margin-top: 20rpx;
+}
+.payMain .pm-pay-item .ppi-main .pm-left .pl-fonts {
+          height: 100rpx;
+          font-size: 26rpx;
+          line-height: 100rpx;
+          margin-left: 20rpx;
+}
+.payMain .pm-pay-item .ppi-main .pm-right {
+        height: 100rpx;
+}
+.payMain .pm-pay-item .ppi-main .pm-right image {
+          width: 30rpx;
+          height: 30rpx;
+          margin-top: 35rpx;
+}
+.payMain .btnMs {
+    width: 90%;
+    margin-top: 16rpx;
+}
+

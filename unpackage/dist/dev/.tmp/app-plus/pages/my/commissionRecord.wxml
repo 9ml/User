@@ -1,0 +1,1 @@
+<view><block wx:for="{{5}}" wx:for-item="value" wx:for-index="__i0__"><view class="list"><view class="left"><view class="name">李先生</view><view class="time">2019.08.03 10:30</view></view><view class="right">+150</view></view></block></view>

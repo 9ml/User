@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "修改支付密码",
+  "usingComponents": {
+    "validcode": "/components/validCode/validCode"
+  }
+}

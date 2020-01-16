@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "创业众筹",
+  "titleNView": false,
+  "usingComponents": {
+    "head-type-a": "/components/assembly/headTypeA"
+  }
+}

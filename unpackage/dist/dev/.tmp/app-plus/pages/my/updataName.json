@@ -1,0 +1,14 @@
+{
+  "navigationBarTitleText": "修改名称",
+  "titleNView": {
+    "buttons": [
+      {
+        "text": "确定",
+        "width": "auto",
+        "fontSize": "16px",
+        "onclick": ""
+      }
+    ]
+  },
+  "usingComponents": {}
+}

@@ -1,0 +1,1 @@
+<view><block wx:for="{{addressArr}}" wx:for-item="value" wx:for-index="index" wx:key="index"><view class="info"><view class="left"><view class="name">{{value.name+"  "+value.phone}}</view><view class="address">{{value.address}}</view></view><view data-event-opts="{{[['tap',[['bianji',['$event']]]]]}}" class="right" bindtap="__e">编辑</view></view></block></view>

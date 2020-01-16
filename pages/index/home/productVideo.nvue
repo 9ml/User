@@ -1,0 +1,617 @@
+<template>
+	<div class="container">
+		<div class="topMs" @click="back()">
+			<image class="tm-img" src="/static/icon/nav_back_zb.png" mode=""></image>
+		</div>
+		<div class="commontsCover" v-if="isShowCover" @click="hiddenAll()"></div>
+		<div class="comments" v-if="isShowComments">
+			<div class="cs-title">
+				<text class="ct-fonts">全部评论</text>
+			</div>
+			<scroll-view class="commentsScroll" scroll-y="true">
+				<div class="comments-item" v-for="(c,c_idx) in 6" :key="c_idx">
+					<div class="ci-user">
+						<div class="cu-header">
+							<image class="ch-images" src="/static/images/img_6_sy.png" mode=""></image>
+						</div>
+						<div class="cu-name">
+							<text class="cn-fonts">故里</text>
+						</div>
+						<div class="ci-cinfo">
+							<text class="cc-fonts">这是一个评论这是一个评论这是一个评论这是一个评论这是一个评论这是一个评论这是一个评论这是一个评论这是一个评论这是一个评论这是一个评论这是一个评论这是一个评论这是一个评论这是一个评论这是一个评论这是一个评论这是一个评论这是一个评论这是一个评论这是一个评论这是一个评论这是一个评论这是一个评论这是一个评论这是一个评论</text>
+						</div>
+					</div>
+				</div>
+			</scroll-view>
+			<div class="cs-input">
+				<div class="ci-input">
+					<input type="text" class="cii-input" placeholder="请输入文字" />
+				</div>
+				<div class="ci-btn">
+					<text class="cb-fonts">发送</text>
+				</div>
+			</div>
+		</div>
+		<div class="shareMs" v-if="isShowShare">
+			<div class="sm-title">
+				<text class="ct-fonts">分享</text>
+			</div>
+			<div class="sm-kinds">
+				<div class="sk-item">
+					<div class="si-icon">
+						<image class="sii-icon" src="/static/icon/icon_wxhy_fx.png" mode=""></image>
+					</div>
+					<div class="si-name">
+						<text class="sn-fonts">微信好友</text>
+					</div>
+				</div>
+				<div class="sk-item">
+					<div class="si-icon">
+						<image class="sii-icon" src="/static/icon/icon_pyq_fx.png" mode=""></image>
+					</div>
+					<div class="si-name">
+						<text class="sn-fonts">朋友圈</text>
+					</div>
+				</div>
+			</div>
+			<div class="sm-bom" @click="hiddenAll()">
+				<text class="sb-fonts">取消</text>
+			</div>
+		</div>
+		<list @loadmore="getData()" :loadmoreoffset="wHeight*3" :show-scrollbar="false" ref="listBox" :pagingEnabled="true"
+		 :scrollable="true">
+			<cell v-for="(v,v_idx) in dataList" :key="v_idx">
+				<div ref="item" class="item" :style="boxStyle">
+					<jVideo v-if="Math.abs(k-v_idx)<=1" :state="v.state" :src="v.vUrl" :boxStyle="boxStyle"></jVideo>
+					<div class="videoHover" v-if="1" @click="tapVideoHover(v.state,$event)" :style="boxStyle">
+						<image v-if="v.state=='pause'" class="playState" src="/static/icon/play.png"></image>
+					</div>
+					<div class="infoMs" @appear="k=v_idx">
+						<div class="im-user">
+							<div class="iu-header">
+								<image class="ih-header" :src="v.vHeader" mode=""></image>
+							</div>
+							<div class="iu-icon">
+								<image class="ii-icon" src="/static/icon/icon_gz_cpdsp.png" mode=""></image>
+							</div>
+						</div>
+						<div class="im-item">
+							<div class="item-icon" @click="likeThis(v_idx)">
+								<image v-if="v.isLike" class="iicon" src="/static/icon/icon_z_xz.png" mode=""></image>
+								<image v-else class="iicon" src="/static/icon/icon_dx_cpdsp.png" mode=""></image>
+							</div>
+							<div class="item-nums">
+								<text class="in-fonts">{{v.vLikeNums}}</text>
+							</div>
+						</div>
+						<div class="im-item">
+							<div class="item-icon" @click="lookComments()">
+								<image class="iicon" src="/static/icon/icon_xx_cpdsp.png" mode=""></image>
+							</div>
+							<div class="item-nums">
+								<text class="in-fonts">{{v.vComments}}</text>
+							</div>
+						</div>
+						<div class="im-item">
+							<div class="item-icon" @click="lookShare()">
+								<image class="iicon" src="/static/icon/icon_fx_cpdsp.png" mode=""></image>
+							</div>
+							<div class="item-nums">
+								<text class="in-fonts">{{v.vShareNum}}</text>
+							</div>
+						</div>
+					</div>
+					<div class="bomMs">
+						<div class="bm-link" @click="goGoodsDetails()">
+							<div class="bl-icon">
+								<image class="bi-shopCar" src="/static/icon/icon_gwc_cpdsp.png" mode=""></image>
+							</div>
+							<div class="bl-name">
+								<text class="bn-fonts">{{v.vLinkName}}</text>
+							</div>
+						</div>
+						<div class="bl-title">
+							<text class="bt-fonts">{{v.vTitle}}</text>
+						</div>
+						<div class="bl-adress">
+							<div class="ba-icon">
+								<image class="bi-adress" src="/static/icon/icon_dz_cpdsp_1.png" mode=""></image>
+							</div>
+							<div class="ba-info">
+								<text class="bi-fonts">{{v.vAdress}}</text>
+							</div>
+						</div>
+						<div class="bt-postVideo">
+							<image class="bp-icon" src="/static/icon/icon_fsp_cpdsp.png" mode=""></image>
+						</div>
+					</div>
+				</div>
+			</cell>
+		</list>
+	</div>
+</template>
+<script>
+	var _self;
+	const dom = weex.requireModule('dom');
+	const BindingX = uni.requireNativePlugin('bindingx');
+	import jVideo from '@/components/assembly/j-video.nvue';
+	export default {
+		components: {
+			jVideo
+		},
+		data: {
+			dataList: [],
+			scrollTop: 0,
+			oldScrollTop: 0,
+			wHeight: 0,
+			boxStyle: {
+				'height': 0,
+				'width': '750rpx',
+			},
+			k: 0,
+			lists: ['A', 'B', 'C', 'D', 'E'],
+			playIngIds: [],
+			ready: false,
+			isShowComments : false,
+			isShowShare : false,
+			isShowCover : false
+		},
+		watch: {
+			k(k, old_k) {
+				_self.dataList[k].state = 'play'
+				_self.dataList[old_k].state = 'stop'
+			},
+		},
+		onShow() {
+			_self.dataList[_self.k].state = 'continue';
+		},
+		onHide() {
+			_self.dataList[_self.k].state = 'pause';
+		},
+		onLoad() {
+			_self = this;
+			_self.wHeight = uni.getSystemInfoSync().windowHeight;
+			_self.boxStyle.height = this.wHeight;
+			_self.getData(e => {
+				_self.dataList[0].state = 'play';
+				_self.ready = true;
+			});
+		},
+		onReady() {},
+		methods: {
+			tapVideoHover(state, event) {
+				if (state == 'play' || state == 'continue') {
+					_self.dataList[_self.k].state = 'pause';
+				} else {
+					_self.dataList[_self.k].state = 'continue';
+				}
+			},
+			likeThis(idx){
+				_self.dataList[idx].isLike = !_self.dataList[idx].isLike
+			},
+			lookComments(){
+				_self.isShowComments = true
+				_self.isShowCover = true
+			},
+			lookShare(){
+				_self.isShowShare = true
+				_self.isShowCover = true
+			},
+			hiddenAll(){
+				_self.isShowCover = false
+				_self.isShowComments = false
+				_self.isShowShare = false
+			},
+			getData(callback = e => {}) {
+				for (let i = 0; i < 5; i++) {
+					_self.dataList.push({
+						vLinkName: "新鲜水果",
+						vTitle: "您的选择，一定不会错！我们会用100%的诚心，100%的服务，换取您200%的满意",
+						vAdress: "江苏省徐州市铜山区",
+						vUrl: "/static/images/ironMan.mp4",
+						state: 'pause',
+						isLike : true,
+						isAnima : false,
+						isShowComments : false,
+						vHeader: "/static/images/img_avatar_cpdsp.png",
+						vLikeNums: 1234,
+						vComments: 4321,
+						vShareNum: 1234
+					});
+				}
+				setTimeout(e => {
+					callback()
+				}, 1000);
+			},
+			back(){
+				uni.navigateBack({
+					delta: 1
+				})
+			},
+			goGoodsDetails(){
+				_self.dataList[_self.k].state = 'pause';
+				uni.navigateTo({
+					url:'/pages/index/home/goodsDetails'
+				});
+			}
+		}
+	}
+</script>
+<style scoped>
+	.commontsCover{
+		width: 750rpx;
+		height: 1300rpx;
+		position: absolute;
+		z-index: 8;
+		top: 0;
+		left: 0;
+	}
+	.shareMs{
+		width: 750rpx;
+		height: 360rpx;
+		background-color: #FFFFFF;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		z-index: 9;
+		border-top-left-radius: 20rpx;
+		border-top-right-radius: 20rpx;
+		align-items: center;
+	}
+	.sm-title{
+		width: 750rpx;
+		height: 90rpx;
+		border-bottom-width: 1rpx;
+		border-color: #AEAEAE;
+		border-style: solid;
+	}
+	.sm-kinds{
+		width: 400rpx;
+		height: 180rpx;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.sk-item{
+		width: 110rpx;
+		height: 120rpx;
+		align-items: center;
+		justify-content: center;
+	}
+	.si-icon{
+		height: 70rpx;
+	}
+	.sii-icon{
+		width: 70rpx;
+		height: 70rpx;
+	}
+	.si-name{
+		height: 50rpx;
+	}
+	.sn-fonts{
+		line-height: 50rpx;
+		text-align: center;
+		font-size: 24rpx;
+	}
+	.sm-bom{
+		width: 750rpx;
+		height: 90rpx;
+		border-top-width: 1rpx;
+		border-color: #AEAEAE;
+		border-style: solid;
+	}
+	.sb-fonts{
+		line-height: 90rpx;
+		text-align: center;
+		font-size: 26rpx;
+	}
+	.comments{
+		width: 750rpx;
+		height: 900rpx;
+		background-color: #FFFFFF;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		z-index: 9;
+		border-top-left-radius: 20rpx;
+		border-top-right-radius: 20rpx;
+	}
+	.cs-title{
+		width: 750rpx;
+		height: 90rpx;
+	}
+	.ct-fonts{
+		text-align: center;
+		line-height: 90rpx;
+		font-size: 30rpx;
+		font-weight: bold;
+	}
+	.commentsScroll{
+		width: 750rpx;
+		height: 720rpx;
+		align-items: center;
+	}
+	.comments-item{
+		width: 690rpx;
+		margin-bottom: 20rpx;
+	}
+	.ci-user{
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+	.cu-header{
+		width: 70rpx;
+		height: 70rpx;
+	}
+	.ch-images{
+		width: 70rpx;
+		height: 70rpx;
+		border-radius: 50%;
+	}
+	.cu-name{
+		width: 600rpx;
+		margin-left: 20rpx;
+	}
+	.cn-fonts{
+		font-size: 28rpx;
+		text-overflow: ellipsis;
+		lines: 1;
+	}
+	.ci-cinfo{
+		width: 550rpx;
+	}
+	.cc-fonts{
+		font-size: 26rpx;
+		line-height: 36rpx;
+	}
+	.cs-input{
+		width: 750rpx;
+		height: 90rpx;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+	}
+	.ci-input{
+		width: 560rpx;
+		height: 70rpx;
+		border-style: solid;
+		border-color: #AEAEAE;
+		border-width: 1rpx;
+		border-radius: 6rpx;
+	}
+	.cii-input{
+		width: 560rpx;
+		height: 70rpx;
+		font-size: 26rpx;
+		padding-left: 10rpx;
+	}
+	.ci-btn{
+		width: 120rpx;
+		height: 60rpx;
+		margin-left: 20rpx;
+		border-radius: 6rpx;
+		background-color: #F77F0C;
+	}
+	.cb-fonts{
+		font-size: 26rpx;
+		color: #FFFFFF;
+		text-align: center;
+		line-height: 60rpx;
+	}
+	
+	.container {
+		flex: 1;
+		background-color: #eeeeee;
+	}
+
+	.item {
+		width: 750rpx;
+		background-color: #000000;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+	}
+
+	.topMs {
+		width: 90%;
+		height: 100rpx;
+		position: fixed;
+		top: 44rpx;
+		z-index: 999;
+	}
+
+	.tm-img {
+		width: 20rpx;
+		height: 36rpx;
+		margin-left: 30rpx;
+	}
+
+	.videoHover {
+		position: absolute;
+		top: 0;
+		left: 0;
+		flex: 1;
+		/* background-color: rgba(0, 0, 0, 0.2); */
+		justify-content: center;
+		align-items: center;
+	}
+
+	.playState {
+		width: 80rpx;
+		height: 80rpx;
+	}
+
+	.infoMs {
+		width: 100rpx;
+		position: absolute;
+		right: 20rpx;
+		bottom: 260rpx;
+		z-index: 999;
+	}
+
+	.im-user {
+		width: 100rpx;
+		height: 130rpx;
+		margin-bottom: 40rpx;
+		position: relative;
+	}
+
+	.iu-header {
+		width: 100rpx;
+		height: 100rpx;
+		border-radius: 50%;
+	}
+
+	.ih-header {
+		width: 100rpx;
+		height: 100rpx;
+	}
+
+	.iu-icon {
+		width: 100rpx;
+		height: 50rpx;
+		justify-content: center;
+		align-items: center;
+		position: absolute;
+		bottom: 0;
+		z-index: 9;
+	}
+
+	.ii-icon {
+		width: 44rpx;
+		height: 44rpx;
+	}
+
+	.im-item {
+		width: 100rpx;
+		height: 130rpx;
+		margin-bottom: 30rpx;
+	}
+
+	.item-icon {
+		width: 100rpx;
+		align-items: center;
+	}
+
+	.iicon {
+		width: 66rpx;
+		height: 60rpx;
+	}
+
+	.in-fonts {
+		width: 100rpx;
+		height: 64rpx;
+		line-height: 64rpx;
+		font-size: 26rpx;
+		text-align: center;
+		color: #FFFFFF;
+	}
+
+	.bomMs {
+		width: 750rpx;
+		height: 250rpx;
+		position: absolute;
+		bottom: 30rpx;
+	}
+
+	.bm-link {
+		width: 200rpx;
+		height: 60rpx;
+		background-color: rgba(0, 0, 0, .4);
+		border-radius: 30rpx;
+		margin: 0 0 20rpx 20rpx;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.bl-icon {
+		width: 80rpx;
+		height: 60rpx;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.bi-shopCar {
+		width: 36rpx;
+		height: 36rpx;
+	}
+
+	.bl-name {
+		width: 120rpx;
+		height: 60rpx;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.bn-fonts {
+		height: 60rpx;
+		line-height: 60rpx;
+		font-size: 26rpx;
+		color: #FFFFFF;
+	}
+
+	.bl-title {
+		margin: 0 0 20rpx 20rpx;
+		position: relative;
+	}
+
+	.bt-fonts {
+		width: 550rpx;
+		height: 80rpx;
+		line-height: 40rpx;
+		font-size: 26rpx;
+		color: #FFFFFF;
+	}
+
+	.bl-adress {
+		margin: 0 0 20rpx 20rpx;
+		flex-direction: row;
+	}
+
+	.ba-icon {
+		width: 40rpx;
+		height: 50rpx;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.bi-adress {
+		width: 36rpx;
+		height: 44rpx;
+	}
+
+	.ba-info {
+		margin-left: 10rpx;
+	}
+
+	.bi-fonts {
+		width: 600rpx;
+		height: 50rpx;
+		font-size: 26rpx;
+		color: #FFFFFF;
+		line-height: 50rpx;
+	}
+
+	.bt-postVideo {
+		width: 140rpx;
+		height: 140rpx;
+		position: absolute;
+		right: 40rpx;
+		top: 60rpx;
+		z-index: 9;
+	}
+
+	.bp-icon {
+		width: 120rpx;
+		height: 120rpx;
+	}
+	
+	.cmMs{
+		width: 750rpx;
+		height: 500rpx;
+		background-color: #FFFFFF;
+	}
+</style>

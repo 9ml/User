@@ -1,0 +1,1 @@
+<view><view data-event-opts="{{[['tap',[['tapshop',['$event']]]]]}}" class="info" bindtap="__e"><text>我关注的店铺</text><text class="right">〉</text></view><view data-event-opts="{{[['tap',[['tapzb',['$event']]]]]}}" class="info" bindtap="__e"><text>我关注的主播</text><text class="right">〉</text></view></view>

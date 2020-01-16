@@ -1,0 +1,1 @@
+<view><block wx:for="{{infoArr}}" wx:for-item="value" wx:for-index="index" wx:key="index"><view class="list"><view class="row2"><image src="../../static/img_1_xjz.png"></image><view class="right"><view class="con">{{value.con}}</view><view class="time">{{"时间："+value.time}}</view><view class="jifen">{{"积分："+value.jifen}}</view></view></view></view></block></view>

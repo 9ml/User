@@ -1,0 +1,1 @@
+<view><block wx:for="{{4}}" wx:for-item="value" wx:for-index="__i0__"><view class="info"><image src="../../static/img_avatar_wd.png"></image><text>张三旗舰店</text><view>取消关注</view></view></block></view>

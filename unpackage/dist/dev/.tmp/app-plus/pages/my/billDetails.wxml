@@ -1,0 +1,1 @@
+<view><block wx:for="{{mxArr}}" wx:for-item="value" wx:for-index="index" wx:key="index"><view class="list"><view><text>{{value.name}}</text><text class="{{[value.state=='成功'?'state':'state1']}}">{{value.state}}</text></view><view><text class="time">{{value.time}}</text><text class="price">{{"+"+value.price}}</text></view></view></block></view>

@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "直播",
+  "titleNView": false,
+  "usingComponents": {
+    "head-type-b": "/components/assembly/headTypeB",
+    "classifica": "/components/assembly/classification"
+  }
+}

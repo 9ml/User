@@ -1,0 +1,229 @@
+<template>
+	<div class="container">
+		<div class="liveMs" :style="boxStyle">
+			<!-- <video :src="liveUrl" :style="boxStyle" controls="nocontrols" autoplay="true"></video> -->
+		</div>
+		<div class="topAll">
+			<div class="topMs">
+				<div class="tm-left">
+					<div class="tl-liver-header">
+						<image class="tlh-img" src="/static/images/img_6_sy.png" mode=""></image>
+					</div>
+					<div class="tl-liver-info">
+						<div class="tli-name">
+							<text class="tn-fonts hiddenFontsA">小奶猫</text>
+						</div>
+						<div class="tli-nums">
+							<div class="tn-icon">
+								<image class="ti-img" src="/static/icon/icon_rs_zb.png" mode=""></image>
+							</div>
+							<div class="tn-nums">
+								<text class="tn-nums-fonts hiddenFontsA">2545</text>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tm-right">
+					<div class="tr-user">
+						<div class="tr-item" v-for="(e,e_idx) in 10" :key="e_idx">
+							<image class="ti-img-user" src="/static/images/img_5_sy.png" mode=""></image>
+						</div>
+					</div>
+					<div class="tr-icon">
+						<image class="ti-img-icon" src="/static/icon/icon_sc_zbj.png" mode=""></image>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="bomAll">
+			<div class="bomMs">
+				<div class="bmm-input">
+					<input class="bi-input" type="text" placeholder="说点什么吧......" upriseOffset="500" placeholder-style="color:#FFFFFF;" />
+				</div>
+				<div class="bmm-item">
+					<image class="bmm-item-img" src="/static/icon/icon_fx_zbj.png" mode=""></image>
+				</div>
+				<div class="bmm-item">
+					<image class="bmm-item-img" src="/static/icon/icon_my_zbj.png" mode=""></image>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<script>
+	var _self;
+	export default {
+		data: {
+			liveUrl : 'http://jieliu2.a2w0m.cn/live/21788_1578822014.flv',
+			boxStyle : {
+				'height': 0,
+				'width': '750rpx'
+			}
+		},
+		onLoad() {
+			_self = this;
+			_self.boxStyle.height = uni.getSystemInfoSync().windowHeight;
+		},
+		methods: {
+			
+		}
+	}
+</script>
+
+<style scoped>
+	.border{
+		border-style: solid;
+		border-width: 1rpx;
+		border-color: #000000;
+	}
+	.container {
+		flex: 1;
+		background-color: #000000;
+		position: relative;
+	}
+	.liveMs{
+		background-color: #FFFFFF;
+	}
+	.topAll{
+		width: 750rpx;
+		height: 120rpx;
+		position: absolute;
+		top: 30rpx;
+		left: 0;
+		z-index : 9;
+		align-items: center;
+	}
+	.topMs{
+		width: 720rpx;
+		height: 120rpx;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.tm-left{
+		width: 260rpx;
+		height: 80rpx;
+		background-color: rgba(0,0,0,.6);
+		border-radius: 40rpx;
+		flex-direction: row;
+		align-items: center;
+	}
+	.tl-liver-header{
+		width: 60rpx;
+		height: 60rpx;
+		margin-left: 12rpx;
+	}
+	.tlh-img{
+		width: 60rpx;
+		height: 60rpx;
+		border-radius: 50%;
+	}
+	.tl-liver-info{
+		width: 150rpx;
+		height: 70rpx;
+		margin-left: 20rpx;
+	}
+	.tli-name{
+		width: 150rpx;
+		height: 40rpx;
+	}
+	.tn-fonts{
+		line-height: 40rpx;
+		font-size: 26rpx;
+		color: #FFFFFF;
+	}
+	.tli-nums{
+		width: 150rpx;
+		height: 30rpx;
+		flex-direction: row;
+		align-items: center;
+	}
+	.tn-icon{
+		width: 22rpx;
+		height: 26rpx;
+		margin-right: 4rpx;
+	}
+	.ti-img{
+		width: 22rpx;
+		height: 26rpx;
+	}
+	.tn-nums{
+		height: 30rpx;
+		margin-left: 4rpx;
+	}
+	.tn-nums-fonts{
+		font-size: 20rpx;
+		line-height: 30rpx;
+		color: #FFFFFF;
+	}
+	.tm-right{
+		width: 380rpx;
+		height: 80rpx;
+		flex-direction: row;
+		align-items: center;
+	}
+	.tr-user{
+		width: 320rpx;
+		height: 80rpx;
+		flex-direction: row;
+		align-items: center;
+	}
+	.tr-item{
+		width: 56rpx;
+		height: 56rpx;
+		margin-right: 10rpx;
+	}
+	.ti-img-user{
+		width: 56rpx;
+		height: 56rpx;
+		border-radius: 50%;
+	}
+	.tr-icon{
+		width: 56rpx;
+		height: 56rpx;
+	}
+	.ti-img-icon{
+		width: 56rpx;
+		height: 56rpx;
+		border-radius: 50%;
+	}
+	.bomAll{
+		width: 750rpx;
+		height: 110rpx;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		z-index : 9;
+		align-items: center;
+	}
+	.bomMs{
+		width: 720rpx;
+		height: 110rpx;
+		flex-direction: row;
+		align-items: center;
+	}
+	.bmm-input{
+		width: 500rpx;
+		height: 80rpx;
+		background-color: rgba(0,0,0,.3);
+		border-radius: 40rpx;
+		align-items: center;
+	}
+	.bi-input{
+		width: 460rpx;
+		height: 80rpx;
+		font-size: 26rpx;
+		color: #FFFFFF;
+	}
+	.bmm-item{
+		width: 72rpx;
+		height: 72rpx;
+		margin-left: 30rpx;
+	}
+	.bmm-item-img{
+		width: 72rpx;
+		height: 72rpx;
+		border-radius: 50%;
+	}
+</style>

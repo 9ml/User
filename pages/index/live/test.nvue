@@ -1,0 +1,15 @@
+<template>
+	<div>
+		<video src="http://jieliu.a2w0m.cn/live/21788_1575423654.flv" autoplay="true" controls></video>
+	</div>
+</template>
+
+<script>
+	export default {
+		
+	}
+</script>
+
+<style>
+
+</style>

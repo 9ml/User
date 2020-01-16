@@ -1,0 +1,493 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.sdMain {
+  height: 288rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  border-top: 8rpx solid #F6F6F6;
+  background-color: #FFFFFF;
+}
+.sdMain .sm-image {
+    width: 38%;
+    height: 220rpx;
+    text-align: center;
+}
+.sdMain .sm-image image {
+      width: 220rpx;
+      height: 100%;
+      border-radius: 10rpx;
+}
+.sdMain .sm-desc {
+    width: 54%;
+    height: 220rpx;
+}
+.sdMain .sm-desc .sd-name {
+      height: 80rpx;
+      line-height: 40rpx;
+      font-size: 26rpx;
+}
+.sdMain .sm-desc .sd-price,
+    .sdMain .sm-desc .sd-nums {
+      height: 70rpx;
+      line-height: 70rpx;
+      font-size: 26rpx;
+}
+.sdMain .sm-desc .sd-price {
+      color: #F26065;
+}
+.sdMain .sm-desc .sd-nums {
+      color: #999999;
+}
+.goodsShow {
+  width: 94%;
+  margin: 0 auto;
+  padding: 20rpx 0 20rpx 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.goodsShow .gsMs {
+    width: 49%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+            flex-direction: column;
+}
+.goodsShow .gsMs .item {
+      margin-bottom: 20rpx;
+      border-radius: 16rpx;
+      box-shadow: 6rpx 6rpx 8rpx #F1F1F1;
+      background-color: #FFFFFF;
+}
+.goodsShow .gsMs .item .i-name {
+        width: 90%;
+        height: 100rpx;
+        margin: 0 auto;
+        font-size: 26rpx;
+        line-height: 50rpx;
+}
+.goodsShow .gsMs .item .i-price {
+        width: 90%;
+        height: 80rpx;
+        margin: 0 auto;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+                align-items: center;
+        -webkit-box-pack: justify;
+        -webkit-justify-content: space-between;
+                justify-content: space-between;
+}
+.goodsShow .gsMs .item .i-price .ip-left {
+          font-size: 32rpx;
+          color: #FF3200;
+}
+.goodsShow .gsMs .item .i-price .ip-right {
+          font-size: 22rpx;
+          color: #999999;
+}
+.goodsShow .gsMs .item-left {
+      height: 530rpx;
+}
+.goodsShow .gsMs .item-left .il-image {
+        height: 344rpx;
+}
+.goodsShow .gsMs .item-left .il-image image {
+          width: 100%;
+          height: 100%;
+}
+.goodsShow .gsMs .item-right {
+      height: 570rpx;
+}
+.goodsShow .gsMs .item-right .ir-image {
+        height: 362rpx;
+}
+.goodsShow .gsMs .item-right .ir-image image {
+          width: 100%;
+          height: 100%;
+}
+.bodyMsA {
+  width: 94%;
+  background-color: #FFFFFF;
+  border-radius: 10rpx;
+  margin: 20rpx auto 20rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+.bodyMsA .bma-item {
+    width: 49%;
+    height: 270rpx;
+}
+.bodyMsA .bma-item:nth-child(odd) {
+      border-bottom: 1rpx solid #F6F6F6;
+      border-right: 1rpx solid #F6F6F6;
+}
+.bodyMsA .bma-item:nth-child(odd) .bi-desc {
+        color: #F74857;
+}
+.bodyMsA .bma-item:nth-child(even) {
+      border-bottom: 1rpx solid #F6F6F6;
+}
+.bodyMsA .bma-item:nth-child(even) .bi-desc {
+        color: #59B5D5;
+}
+.bodyMsA .bma-item .bi-title {
+      height: 60rpx;
+      line-height: 60rpx;
+      font-size: 30rpx;
+      font-weight: bold;
+      text-align: center;
+}
+.bodyMsA .bma-item .bi-desc {
+      height: 50rpx;
+      line-height: 50rpx;
+      text-align: center;
+      font-size: 26rpx;
+}
+.bodyMsA .bma-item .bi-show {
+      height: 160rpx;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+              align-items: center;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+              justify-content: center;
+}
+.bodyMsA .bma-item .bi-show .bs-item {
+        width: 130rpx;
+        height: 130rpx;
+        border-radius: 8rpx;
+        overflow: hidden;
+        margin: 0 10rpx 0 10rpx;
+}
+.bodyMsA .bma-item .bi-show .bs-item image {
+          width: 100%;
+          height: 100%;
+}
+.bodyMsB {
+  background-color: #FFFFFF;
+}
+.bodyMsB .bmbTab {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+}
+.bodyMsB .bmbTab .bt-item {
+      width: 25%;
+      height: 100rpx;
+}
+.bodyMsB .bmbTab .bt-item .bi-name {
+        height: 50rpx;
+        line-height: 60rpx;
+        text-align: center;
+        font-size: 30rpx;
+        font-weight: bold;
+}
+.bodyMsB .bmbTab .bt-item .bi-desc {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+                justify-content: center;
+}
+.bodyMsB .bmbTab .bt-item .bi-desc .bd-main {
+          height: 30rpx;
+          font-size: 22rpx;
+          color: #999999;
+          padding: 1rpx 6rpx 1rpx 6rpx;
+          border-radius: 15rpx;
+}
+.bodyMsB .bmbTab .bt-ac .bi-name {
+      color: #F87504;
+}
+.bodyMsB .bmbTab .bt-ac .bi-desc .bd-main {
+      background-color: #F87504;
+      color: #FFFFFF;
+}
+.storeMs {
+  width: 100%;
+  height: 300rpx;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+}
+.storeMs .sm-bg {
+    width: 100%;
+    height: 300rpx;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+}
+.storeMs .sm-bg image {
+      width: 100%;
+      height: 100%;
+}
+.storeMs .smSpace {
+    height: 80rpx;
+}
+.storeMs .sm-top {
+    width: 94%;
+    height: 100rpx;
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+            justify-content: space-between;
+}
+.storeMs .sm-top .st-header {
+      width: 100rpx;
+      height: 100rpx;
+}
+.storeMs .sm-top .st-header image {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+}
+.storeMs .sm-top .st-name {
+      width: 180rpx;
+      height: 100rpx;
+      font-size: 30rpx;
+      color: #FFFFFF;
+      text-align: center;
+      line-height: 100rpx;
+}
+.storeMs .sm-top .st-goicon {
+      width: 50rpx;
+      height: 100rpx;
+      text-align: center;
+}
+.storeMs .sm-top .st-goicon image {
+        width: 24rpx;
+        height: 24rpx;
+        margin-top: 40rpx;
+}
+.storeMs .sm-top .st-state {
+      width: 120rpx;
+      height: 50rpx;
+      border-radius: 25rpx;
+      background-color: #F23634;
+      color: #FFFFFF;
+      text-align: center;
+      line-height: 50rpx;
+      font-size: 22rpx;
+}
+.storeMs .sm-top .st-follow {
+      width: 100rpx;
+      height: 50rpx;
+      border-radius: 25rpx;
+      font-size: 22rpx;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: #FFFFFF;
+      text-align: center;
+      line-height: 50rpx;
+      border: 1rpx solid #CCCCCC;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+              align-items: center;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+              justify-content: center;
+}
+.storeMs .sm-top .st-follow .sf-icon {
+        width: 30rpx;
+        height: 50rpx;
+}
+.storeMs .sm-top .st-follow .sf-icon image {
+          width: 24rpx;
+          height: 24rpx;
+          margin-top: 13rpx;
+}
+.storeMs .sm-tab {
+    width: 80%;
+    height: 90rpx;
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+            justify-content: space-between;
+}
+.storeMs .sm-tab .st-search {
+      width: 24%;
+      height: 60rpx;
+      background-color: rgba(204, 204, 204, 0.6);
+      border-radius: 30rpx;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+              align-items: center;
+}
+.storeMs .sm-tab .st-search .ss-icon {
+        width: 44%;
+        height: 60rpx;
+        text-align: center;
+}
+.storeMs .sm-tab .st-search .ss-icon image {
+          width: 30rpx;
+          height: 30rpx;
+}
+.storeMs .sm-tab .st-search .ss-fonts {
+        width: 56%;
+        height: 60rpx;
+        font-size: 26rpx;
+        line-height: 60rpx;
+        color: #FFFFFF;
+}
+.storeMs .sm-tab .st-tabs {
+      width: 72%;
+      height: 60rpx;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+              align-items: center;
+}
+.storeMs .sm-tab .st-tabs .st-item {
+        width: 20%;
+        height: 60rpx;
+        line-height: 60rpx;
+        text-align: center;
+        font-size: 26rpx;
+        text-align: center;
+        color: #FFFFFF;
+}
+.storeSpace {
+  height: 300rpx;
+}
+.couponMs {
+  width: 90%;
+  margin: 20rpx auto 10rpx;
+}
+.couponMs .cm-item {
+    width: 100%;
+    height: 180rpx;
+    position: relative;
+}
+.couponMs .cm-item .ci-bg {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+}
+.couponMs .cm-item .ci-bg image {
+        width: 100%;
+        height: 100%;
+}
+.couponMs .cm-item .ci-ms {
+      width: 92%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      margin-left: -46%;
+      z-index: 1;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+              align-items: center;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+              justify-content: space-between;
+}
+.couponMs .cm-item .ci-ms .cm-left {
+        height: 130rpx;
+}
+.couponMs .cm-item .ci-ms .cm-left .cl-top {
+          height: 50rpx;
+          line-height: 50rpx;
+          font-size: 26rpx;
+          color: #FF0000;
+          font-weight: bold;
+}
+.couponMs .cm-item .ci-ms .cm-left .cl-top .ct-price {
+            font-size: 30rpx;
+            margin-right: 20rpx;
+}
+.couponMs .cm-item .ci-ms .cm-left .cl-type {
+          height: 40rpx;
+          font-size: 24rpx;
+          line-height: 40rpx;
+          color: #777777;
+}
+.couponMs .cm-item .ci-ms .cm-left .cl-time {
+          height: 40rpx;
+          line-height: 40rpx;
+          font-size: 22rpx;
+          color: #999999;
+}
+.couponMs .cm-item .ci-ms .cm-right {
+        width: 110rpx;
+        height: 50rpx;
+        border-radius: 25rpx;
+        background-color: #F77F0C;
+        line-height: 50rpx;
+        text-align: center;
+        color: #FFFFFF;
+        font-size: 26rpx;
+}
+.couponMs .cm-item .ci-ms .cm-have {
+        background-color: #AEAEAE;
+}
+

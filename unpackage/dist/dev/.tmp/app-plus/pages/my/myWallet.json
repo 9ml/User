@@ -1,0 +1,15 @@
+{
+  "navigationBarTitleText": "我的钱包",
+  "titleNView": {
+    "buttons": [
+      {
+        "fontSize": "16px",
+        "text": "银行卡管理",
+        "width": "auto"
+      }
+    ]
+  },
+  "usingComponents": {
+    "validcode": "/components/validCode/validCode"
+  }
+}

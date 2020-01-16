@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "产品视频列表",
+  "titleNView": false,
+  "usingComponents": {
+    "head-type-b": "/components/assembly/headTypeB"
+  }
+}

@@ -1,0 +1,1 @@
+<view><view class="content"><view><text>联系人</text><input placeholder="请输入姓名"/></view><view><text>手机号</text><input placeholder="请输入手机号码"/></view><view><text>收货地址</text><input placeholder="请输入收货地址"/></view><view class="moren"><text>设为默认地址</text><switch color="#4CD964"></switch></view></view></view>

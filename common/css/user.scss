@@ -1,0 +1,153 @@
+page{
+	background-color: #FFFFFF;
+}
+.inpMs{
+	margin-top: 40rpx;
+	.im-item{
+		width: 550rpx;
+		margin: 20rpx auto 0;
+		display: flex;
+		align-items: center;
+		position: relative;
+		justify-content: space-between;
+		border-bottom: 1rpx solid #AEAEAE;
+		.ii-left{
+			width: 24%;
+			height: 80rpx;
+			line-height: 80rpx;
+			text-align: center;
+			font-size: 26rpx;
+		}
+		.ii-right{
+			width: 76%;
+			height: 80rpx;
+			input{
+				width: 100%;
+				height: 100%;
+				font-size: 26rpx;
+			}
+		}
+		.item{
+			width: 20%;
+			height: 60rpx;
+			text-align: center;
+			line-height: 60rpx;
+			font-size: 24rpx;
+			color: #7C7C7C;
+		}
+		.ii-getCode{
+			width: 36%;
+			height: 80rpx;
+			position: absolute;
+			top: 0;
+			right: 0;
+			font-size: 26rpx;
+			color: #F88114;
+			z-index: 99;
+			line-height: 80rpx;
+			text-align: center;
+		}
+		.ii-gotCode{
+			color: #666666;
+		}
+	}
+}
+.btnMs{
+	width: 500rpx;
+	height: 80rpx;
+	margin: 120rpx auto 0;
+	background-color: #F77F0C;
+	border-radius: 40rpx;
+	text-align: center;
+	line-height: 80rpx;
+	color: #FFFFFF;
+	font-size: 30rpx;
+}
+.otherLogin{
+	width: 400rpx;
+	height: 60rpx;
+	margin: 150rpx auto 0;
+	display: flex;
+	align-items: center;
+	.ol-lines{
+		width: 35%;
+		height: 1rpx;
+		background-color: #999999;
+	}
+	.ol-fonts{
+		width: 30%;
+		text-align: center;
+		color: #999999;
+		font-size: 26rpx;
+	}
+}
+.otherIcon{
+	width: 280rpx;
+	height: 80rpx;
+	margin: 20rpx auto 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	.oi{
+		width: 80rpx;
+		height: 80rpx;
+		image{
+			width: 100%;
+			height: 100%;
+		}
+	}
+}
+.ol-tip{
+	margin-top: 40rpx;
+	height: 60rpx;
+	text-align: center;
+	line-height: 60rpx;
+	font-size: 26rpx;
+	color: #999999;
+	text{
+		color: #F77F0C;
+	}
+}
+.uaMs{
+	width: 480rpx;
+	height: 600rpx;
+	background-color: #FFFFFF;
+	border-radius: 10rpx;
+	.um-title{
+		height: 80rpx;
+		line-height: 80rpx;
+		font-size: 32rpx;
+		font-weight: bold;
+		text-align: center;
+	}
+	.um-desc{
+		width: 90%;
+		height: 400rpx;
+		overflow: auto;
+		margin: 0 auto;
+		font-size: 24rpx;
+	}
+	.um-btns{
+		width: 380rpx;
+		height: 100rpx;
+		margin: 0 auto;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		view{
+			width: 160rpx;
+			height: 60rpx;
+			border-radius: 30rpx;
+			font-size: 26rpx;
+			text-align: center;
+			line-height: 60rpx;
+		}
+		.ub-left{
+			background-color: #CDCECD;
+		}
+		.ub-right{
+			color: #FFFFFF;
+			background-color: #F77F0C;
+		}
+	}
+}
