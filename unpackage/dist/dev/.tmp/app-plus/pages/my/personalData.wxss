@@ -43,6 +43,7 @@
     right: 60rpx;
     width: 80rpx;
     height: 80rpx;
+    border-radius: 50%;
 }
 .info text {
     margin-left: 30rpx;

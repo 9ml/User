@@ -30,7 +30,7 @@ export default {
 				if (res.code == 1) {
 					uni.showToast({
 						title: '修改成功',
-						icon: 'success'
+						icon: 'none'
 					});
 					setTimeout(() => {
 						uni.navigateBack({

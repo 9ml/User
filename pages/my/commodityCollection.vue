@@ -5,11 +5,11 @@
 		<view class="content" v-for="(value,index) in infoArr" :key='index'>
 			<view class="info">
 				<view v-if="ok" class="xuan" :class="{'cur': rSelect.indexOf(index)!=-1}" @tap="xuan(index)"></view>
-				<image class="img" :src="value.src"></image>
+				<image class="img" :src="value.image"></image>
 				<view class="right">
-					<view class="con">{{value.con}}</view>
+					<view class="con">{{value.name}}</view>
 					<view class="price">￥{{value.price}}</view>
-					<view class="xl">销量:{{value.xl}}</view>
+					<view class="xl">销量:{{value.sales}}</view>
 				</view>
 			</view>
 		</view>
@@ -29,29 +29,33 @@
 			return {
 				ok:false,
 				rSelect: [],
-				infoArr: [{
-						src: '../../static/img_1_xjz.png',
-						con: '蜜桃青州蜜桃蜜桃青州蜜桃蜜桃青州蜜桃蜜桃青州蜜桃',
-						price: '20.00',
-						xl:2341
-					},
-					{
-						src: '../../static/img_1_xjz.png',
-						con: '蜜桃青州蜜桃蜜桃青州蜜桃蜜桃青州蜜桃蜜桃青州蜜桃',
-						price: '20.00',
-						xl:2341
-					}
-				]
+				infoArr: []
 			}
 		},
-		onNavigationBarButtonTap:function(e){
+		onNavigationBarButtonTap() {
 			this.ok = !this.ok
-			console.log(e)
-			e.text = '完成'
-			console.log(e)
-			console.log(e.text)
+		},
+		onLoad() {
+			this.commodityList()
 		},
 		methods: {
+			commodityList(){
+				this.Api.commodityList({
+					token:uni.getStorageSync('token')
+				},res=>{
+					console.log(res)
+					if(res.data.length == 0){
+						uni.showToast({
+							title:'当前没有商品收藏',
+							icon:'none'
+						})
+					}else{
+						this.infoArr = res.data
+					}
+				})
+			},
+			
+			
 			xuan(e) {
 				if (this.rSelect.indexOf(e) == -1) {
 					this.rSelect.push(e);

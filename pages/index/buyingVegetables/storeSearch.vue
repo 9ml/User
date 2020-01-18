@@ -11,7 +11,7 @@
 						<image src="/static/icon/icon_ss_ss.png" mode=""></image>
 					</view>
 					<view class="ti-input">
-						<input type="text" placeholder="请输入搜索内容" />
+						<input type="text" placeholder="请输入搜索内容" v-model="content"/>
 					</view>
 				</view>
 				<view class="tm-fonts" @tap="search()">
@@ -66,6 +66,10 @@
 	export default {
 		data() {
 			return {
+				latitude: '',
+				longitude: '',
+				city: '',
+				content:'',
 				isShowHisSearch : true,
 				hisSearchList : [
 					{
@@ -153,13 +157,43 @@
 		},
 		onLoad() {
 			_self = this;
+			_self.getLocation()
 		},
 		methods: {
+			getLocation() {
+				uni.getLocation({
+					type: 'wgs84',
+					geocode: true,
+					success: (res) => {
+						_self.city = res.address.city
+						_self.longitude = res.longitude
+						_self.latitude = res.latitude
+						console.log(_self.city)
+						console.log(_self.latitude)
+						console.log(_self.longitude)
+					}
+				})
+			},
 			choseKinds(idx){
 				_self.current = idx;
 			},
+			// 店铺商品搜索
 			search(){
-				_self.isShowHisSearch = false
+				var address = _self.longitude + ',' + _self.latitude
+				_self.Api.searchshopself({
+					page:1,
+					limit:6,
+					content:_self.content,
+					city:_self.city,
+					status:1,
+					sort:0,
+					type:1,
+					coordinate:address
+				},res=>{
+					console.log(res)
+				})
+				
+				// _self.isShowHisSearch = false
 			}
 		}
 	}

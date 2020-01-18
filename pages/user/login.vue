@@ -139,6 +139,11 @@
 			_self = this;
 			_self.phone = options.phone
 			_self.pwd = options.pwd
+			if(uni.getStorageSync('token') != ''){
+				uni.switchTab({
+					url:'../index/home/index'
+				})
+			}
 		},
 		methods: {
 			tapChangeNav(idx){

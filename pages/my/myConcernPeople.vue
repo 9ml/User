@@ -1,15 +1,52 @@
 <!-- 我关注的主播 -->
 <template>
 	<view>
-		<view class="info" v-for="value in 4">
-			<image src="../../static/img_avatar_wd.png"></image>
-			<text>张三</text>
-			<view>取消关注</view>
+		<view class="info" v-for="(value,index) in zhuboArr" :key='index'>
+			<image :src="value.avatar"></image>
+			<text>{{value.nickname}}</text>
+			<view @tap="cancel(value.anchor_id)">取消关注</view>
 		</view>
 	</view>
 </template>
 
 <script>
+	export default{
+		data(){
+			return{
+				zhuboArr:[]
+			}
+		},
+		onLoad() {
+			this.zhubolist()
+		},
+		methods:{
+			cancel(id){
+				this.Api.follow({
+					anchor_id:id,
+					token:uni.getStorageSync('token')
+				},res=>{
+					console.log(res)
+				})
+			},
+			zhubolist(){
+				this.Api.zhubolist({
+					token:uni.getStorageSync('token'),
+					type:1
+				},res=>{
+					console.log(res)
+					if(res.data.length == 0){
+						uni.showToast({
+							title:'当前没有关注的主播',
+							icon:'none'
+						})
+					}else{
+						this.zhuboArr = res.data
+						console.log(this.zhuboArr)
+					}
+				})
+			}
+		}
+	}
 </script>
 
 <style lang="scss">

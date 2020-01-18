@@ -85,7 +85,6 @@
         }
       }
     },
-    "arguments": "{\"id\":0,\"name\":\"pages/my/setUpShop\",\"pathName\":\"pages/my/setUpShop\",\"query\":\"\"}",
     "allowsInlineMediaPlayback": true,
     "safearea": {
       "background": "#FFFFFF",
@@ -103,9 +102,9 @@
       }
     },
     "tabBar": {
-      "color": "#000000",
+      "color": "#ccc",
       "backgroundColor": "#FFFFFF",
-      "selectedColor": "#000000",
+      "selectedColor": "#f88312",
       "list": [
         {
           "pagePath": "pages/index/home/index",

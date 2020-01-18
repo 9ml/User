@@ -168,6 +168,7 @@ export default {
 		margin-top: 100rpx;
 		margin-left: 30rpx;
 		margin-right: 30rpx;
+		border-radius: 50%;
 	}
 	.name {
 		position: absolute;

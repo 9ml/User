@@ -12,7 +12,7 @@
 				<view class="title">是否退出</view>
 				<view class="con4_v">
 					<view @tap="quxiao">取消</view>
-					<view style="color: #fa8615;border-right: none;">确定</view>
+					<view style="color: #fa8615;border-right: none;" @tap="queding">确定</view>
 				</view>
 			</view>
 		</view>
@@ -27,6 +27,16 @@
 			}
 		},
 		methods:{
+			queding(){
+				uni.removeStorage({
+					key:"token",
+					success: (res) => {
+						uni.reLaunch({
+							url: "../user/login"
+						})
+					}
+				})
+			},
 			pass(){
 				uni.navigateTo({
 					url:'setPassword'

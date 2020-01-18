@@ -1,15 +1,51 @@
 <!-- 我关注的店铺 -->
 <template>
 	<view>
-		<view class="info" v-for="value in 4">
-			<image src="../../static/img_avatar_wd.png"></image>
-			<text>张三旗舰店</text>
-			<view>取消关注</view>
+		<view class="info" v-for="(value,index) in shopArr" :key='index'>
+			<image :src="value.image"></image>
+			<text>{{value.name}}</text>
+			<view @tap="cancel(value.shop_id)">取消关注</view>
 		</view>
 	</view>
 </template>
 
 <script>
+	export default{
+		data(){
+			return{
+				shopArr:[]
+			}
+		},
+		onLoad() {
+			this.shoplist()
+		},
+		methods:{
+			cancel(id){
+				this.Api.follow({
+					anchor_id:id,
+					token:uni.getStorageSync('token')
+				},res=>{
+					console.log(res)
+				})
+			},
+			shoplist(){
+				this.Api.shoplist({
+					token:uni.getStorageSync('token'),
+					type:1
+				},res=>{
+					console.log(res)
+					if(res.data.length == 0){
+						uni.showToast({
+							title:'当前没有关注的店铺',
+							icon:'none'
+						})
+					}else{
+						this.shopArr = res.data
+					}
+				})
+			}
+		}
+	}
 </script>
 
 <style lang="scss">

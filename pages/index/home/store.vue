@@ -218,8 +218,23 @@
 		},
 		onLoad() {
 			_self = this;
+			_self.shopgoodslist()
 		},
 		methods: {
+			// 店铺商品列表
+			shopgoodslist(){
+				this.Api.shopgoodslist({
+					page:1,
+					limit:6,
+					type_id:1,
+					status:1,
+					business_id:1,
+					sort:0,
+					type:1
+				},res=>{
+					console.log(res)
+				})
+			},
 			receiveCoupon(idx){
 				_self.couponList[idx].isHave = true
 			},

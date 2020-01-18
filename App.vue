@@ -1,5 +1,9 @@
 <script>
 	export default {
+		globalData:{
+			// 上传文件域名
+			upload:'http://47.111.109.110:80'
+		},
 		onLaunch: function() {
 			console.log('App Launch')
 		},

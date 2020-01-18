@@ -3,24 +3,63 @@
 	<view>
 		<view class="form">
 			<text>标题</text>
-			<input placeholder="请输入标题" />
+			<input placeholder="请输入标题" v-model="title"/>
 		</view>
 		
 		<view class="form">
 			<text>联系方式</text>
-			<input type="number" maxlength="11" placeholder="请输入联系方式" />
+			<input type="number" maxlength="11" placeholder="请输入联系方式" v-model="phone"/>
 		</view>
 		
 		<view class="fankui">
 			<text>反馈内容</text>
-			<textarea placeholder="请输入反馈内容"></textarea>
+			<textarea placeholder="请输入反馈内容" v-model="content"></textarea>
 		</view>
 		
-		<view class="submit">确认反馈</view>
+		<view class="submit" @tap="submit">确认反馈</view>
 	</view>
 </template>
 
 <script>
+	export default{
+		data(){
+			return{
+				title:'',
+				phone:'',
+				content:''
+			}
+		},
+		methods:{
+			submit(){
+				if(this.title == '' || this.phone == '' || this.content == ''){
+					uni.showToast({
+						title:'请输入完整信息',
+						icon:'none'
+					})
+				}else{
+					this.Api.feedback({
+						token:uni.getStorageSync('token'),
+						title:this.title,
+						contact:this.phone,
+						content:this.content
+					},res=>{
+						console.log(res)
+						if(res.code == 1){
+							uni.showToast({
+								title: res.msg,
+								icon:'none'
+							})
+						}else{
+							uni.showToast({
+								title: res.msg,
+								icon:'none'
+							})
+						}
+					})
+				}
+			}
+		}
+	}
 </script>
 
 <style lang="scss">

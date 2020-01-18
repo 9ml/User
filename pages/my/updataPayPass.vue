@@ -9,7 +9,7 @@
 			
 			<view class="form">
 				<text>验证码</text>
-				<input type="number" placeholder="请输入验证码"/>
+				<input type="number" placeholder="请输入验证码" v-model="code"/>
 				<text class="send" v-if="countDown==0" @click="enter">获取验证码</text>
 				<text class="send" v-else>重新获取{{countDown}}</text>
 			</view>
@@ -27,7 +27,7 @@
 		<view v-if="ok2">
 			<view class="head">请再次确认支付密码</view>
 			<validcode :maxlength="6" :isPwd="true" @finish="finish2"></validcode>
-			<view class="submit">确定</view>
+			<view class="submit" @tap="submit">确定</view>
 		</view>
 
 	</view>
@@ -42,11 +42,40 @@
 				ok2:false,
 				countDown: 0,
 				phone:'',
+				code:'',
 				pass1:'',
 				pass2:''
 			}
 		},
 		methods:{
+			submit(){
+				if(this.pass1 != this.pass2){
+						uni.showToast({
+							title:'两次输入密码不一致',
+							icon:'none'
+						})
+				}else{
+					this.Api.changePayPass({
+						pay_password:this.pass2,
+						mobile:this.phone,
+						captcha:this.code,
+						token:uni.getStorageSync('token')
+					},res=>{
+						console.log(res)
+						if(res.code == 1){
+							uni.showToast({
+								title:res.msg,
+								icon:'none'
+							})
+						}else{
+							uni.showToast({
+								title:res.msg,
+								icon:'none'
+							})
+						}
+					})
+				}
+			},
 			finish1(e) {
 				console.log(e);
 				this.pass1 = e
@@ -54,13 +83,26 @@
 				this.ok2 = true
 			},
 			finish2(e) {
-				this.pass1 = ''
 				console.log(e);
 				this.pass2 = e
 			},
 			next(){
-				this.ok = false
-				this.ok1 = true
+				this.Api.checkdx({
+					mobile:this.phone,
+					captcha:this.code,
+					event:'change_pay_password'
+				},res=>{
+					console.log(res)
+					if(res.code == 1){
+						this.ok = false
+						this.ok1 = true
+					}else{
+						uni.showToast({
+							title:a.msg,
+							icon:'none'
+						})
+					}
+				})
 			},
 			enter(){
 				if(!(/^1[3456789]\d{9}$/.test(this.phone))){
@@ -69,13 +111,31 @@
 						icon: "none"
 					})
 				}else{
-					this.countDown = 60;
-					let timer = setInterval(() => {
-						this.countDown--;
-						if (this.countDown == 0) {
-							clearInterval(timer)
+					this.Api.send({
+						mobile:this.phone,
+						event:'change_pay_password'
+					},res=>{
+						console.log(JSON.parse(res))
+						var a = JSON.parse(res)
+						if(a.code == 1){
+							uni.showToast({
+								title: a.msg,
+								icon:'none'
+							})
+							this.countDown = 60;
+							let timer = setInterval(() => {
+								this.countDown--;
+								if (this.countDown == 0) {
+									clearInterval(timer)
+								}
+							}, 1000)
+						}else{
+							uni.showToast({
+								title: a.msg,
+								icon:'none'
+							})
 						}
-					}, 1000)
+					})
 				}
 			}
 		}
