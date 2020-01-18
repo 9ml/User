@@ -2,6 +2,7 @@
   "pages": [
     "pages/user/login",
     "pages/user/phoneRegiste",
+    "pages/index/home/goodsList",
     "pages/index/home/index",
     "pages/shopCar/shopCar",
     "pages/index/other/index",

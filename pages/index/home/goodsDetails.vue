@@ -467,10 +467,22 @@
 				]
 			}
 		},
-		onLoad(){
+		onLoad(options){
 			_self = this;
+			_self.goodsId = options.goodsId;
+			_self.getComments();
 		},
 		methods: {
+			// 评论
+			getComments(){
+				_self.Api.apiVegetablesCommodityDetail({
+					page : 0,
+					limit : 2,
+					id : _self.goodsId
+				},res=>{
+					console.log(res);
+				})
+			},
 			onPageScroll(info) {
 				if(info.scrollTop >= 80){
 					_self.heightShow = true;

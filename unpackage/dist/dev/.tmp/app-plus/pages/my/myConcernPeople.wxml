@@ -1,1 +1,1 @@
-<view><block wx:for="{{4}}" wx:for-item="value" wx:for-index="__i0__"><view class="info"><image src="../../static/img_avatar_wd.png"></image><text>张三</text><view>取消关注</view></view></block></view>
+<view><block wx:for="{{zhuboArr}}" wx:for-item="value" wx:for-index="index" wx:key="index"><view class="info"><image src="{{value.avatar}}"></image><text>{{value.nickname}}</text><view data-event-opts="{{[['tap',[['cancel',['$0'],[[['zhuboArr','',index,'anchor_id']]]]]]]}}" bindtap="__e">取消关注</view></view></block></view>

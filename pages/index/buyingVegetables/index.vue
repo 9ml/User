@@ -17,7 +17,7 @@
 		<classifica :classiList="classiList" :isShowSwiper="isShowSwiper"></classifica>
 		<view class="lineA"></view>
 		<view class="bodyMsA">
-			<view class="bma-item" v-for="(a,a_idx) in listA" :key="a_idx">
+			<view class="bma-item" v-for="(a,a_idx) in listA" :key="a_idx" @click="myTools.navTo('index/home/goodsList')">
 				<view class="bi-title">
 					{{a.name}}
 				</view>

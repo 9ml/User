@@ -17,6 +17,7 @@ function request() {
 }
 
 function buildRequest(baseUrl) {
+	// User
 	// 发送短信
 	request.prototype.send = function(params, callBack) {
 		post(baseUrl + '/send', params, callBack)
@@ -40,8 +41,6 @@ function buildRequest(baseUrl) {
 		loading()
 		post(baseUrl + '/mobile/login', params, callBack)
 	}
-	
-	
 	// 首页
 	// 同城买菜搜索本店商品
 	request.prototype.searchshopself = function(params, callBack) {
@@ -51,7 +50,15 @@ function buildRequest(baseUrl) {
 	request.prototype.shopgoodslist = function(params, callBack) {
 		post(baseUrl + '/api/vegetables/userIndex', params, callBack)
 	}
-	
+	// 同城买菜
+	// 四个模块查询商品
+	request.prototype.apiVegetablesType = function(params, callBack) {
+		post(baseUrl + '/api/Vegetables/type', params, callBack)
+	}
+	// 商品详情(评论)
+	request.prototype.apiVegetablesCommodityDetail = function(params, callBack) {
+		post(baseUrl + '/api/vegetables/commodityDetail', params, callBack)
+	}
 	
 	
 	
