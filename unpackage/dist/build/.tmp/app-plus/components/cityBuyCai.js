@@ -1,0 +1,10 @@
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["components/cityBuyCai"],{2240:function(n,t,a){"use strict";var e,c=function(){var n=this,t=n.$createElement;n._self._c},u=[];a.d(t,"b",function(){return c}),a.d(t,"c",function(){return u}),a.d(t,"a",function(){return e})},6071:function(n,t,a){"use strict";a.r(t);var e=a("2240"),c=a("8a3c");for(var u in c)"default"!==u&&function(n){a.d(t,n,function(){return c[n]})}(u);a("c7f5");var i,r=a("f0c5"),o=Object(r["a"])(c["default"],e["b"],e["c"],!1,null,null,null,!1,e["a"],i);t["default"]=o.exports},"81ac":function(n,t,a){},"8a3c":function(n,t,a){"use strict";a.r(t);var e=a("c9a7"),c=a.n(e);for(var u in e)"default"!==u&&function(n){a.d(t,n,function(){return e[n]})}(u);t["default"]=c.a},c7f5:function(n,t,a){"use strict";var e=a("81ac"),c=a.n(e);c.a},c9a7:function(n,t,a){"use strict";(function(n){Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var a={data:function(){return{current:"",tcCat:[{name:"全部"},{name:"待付款"},{name:"待评价"},{name:"退款或售后"}],infoArr:[{shop:"张三旗舰店",state:1,src:"../../static/img_1_xjz.png",con:"水蜜桃贱卖水蜜桃贱卖水蜜桃贱卖水蜜桃贱卖水蜜桃贱卖水蜜桃贱卖",time:"2019.02.01 10:30",num:1,price:"30.00",heji:"30.00"},{shop:"张三旗舰店",state:2,src:"../../static/img_1_xjz.png",con:"水蜜桃贱卖水蜜桃贱卖水蜜桃贱卖水蜜桃贱卖水蜜桃贱卖水蜜桃贱卖",time:"2019.02.01 10:30",num:1,price:"30.00",heji:"30.00"}]}},methods:{tuikuan:function(){n.navigateTo({url:"../my/cityApplyRefund"})},wancheng:function(){n.navigateTo({url:"orderFulfillment"})},plbtn:function(){n.navigateTo({url:"pinglun"})},pay:function(){n.navigateTo({url:"payOrder"})},tapcat:function(n){this.current=n}}};t.default=a}).call(this,a("6e42")["default"])}}]);
+;(global["webpackJsonp"] = global["webpackJsonp"] || []).push([
+    'components/cityBuyCai-create-component',
+    {
+        'components/cityBuyCai-create-component':(function(module, exports, __webpack_require__){
+            __webpack_require__('6e42')['createComponent'](__webpack_require__("6071"))
+        })
+    },
+    [['components/cityBuyCai-create-component']]
+]);

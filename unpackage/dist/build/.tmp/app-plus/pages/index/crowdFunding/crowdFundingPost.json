@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "众筹内容发布",
+  "titleNView": false,
+  "usingComponents": {
+    "head-type-a": "/components/assembly/headTypeA",
+    "w-picker": "/components/w-picker/w-picker"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "订单提交(同城买菜-购物车)",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "head-type-a": "/components/assembly/headTypeA",
+    "uni-popup": "/components/uni-popup/uni-popup"
+  }
+}

@@ -335,10 +335,22 @@
 				]
 			}
 		},
-		onLoad() {
+		onLoad(options) {
 			_self = this;
+			console.log(options);
+			if(options.name === '同城买菜'){
+				_self.getbuyingVegetablesGoodsList();
+			}
 		},
 		methods: {
+			// 商品列表(同城买菜)
+			getbuyingVegetablesGoodsList(){
+				_self.Api.apiVegetablesRecommendVegetables({
+					
+				},res=>{
+					console.log(res);
+				});
+			},
 			choseTab(idx){
 				_self.curB = idx
 			}

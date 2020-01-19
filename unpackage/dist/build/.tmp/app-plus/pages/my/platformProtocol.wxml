@@ -1,0 +1,1 @@
+<view class="content"><block wx:for="{{infoArr}}" wx:for-item="value" wx:for-index="index" wx:key="index"><view class="info"><view>{{index+1+"."+value.title}}</view><view class="info_i">{{index+"."+index+value.info}}</view></view></block></view>

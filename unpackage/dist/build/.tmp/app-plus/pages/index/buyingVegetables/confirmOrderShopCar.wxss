@@ -1,0 +1,426 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+page {
+  background-color: #F6F6F6;
+}
+.choseAdressMs {
+  width: 92%;
+  height: 220rpx;
+  background-color: #FFFFFF;
+  border-radius: 16rpx;
+  margin: 20rpx auto 20rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.choseAdressMs .cam-icon {
+    width: 16%;
+    height: 70rpx;
+    text-align: center;
+}
+.choseAdressMs .cam-icon image {
+      width: 70rpx;
+      height: 70rpx;
+      border-radius: 50%;
+}
+.choseAdressMs .cam-info {
+    width: 70%;
+    height: 150rpx;
+}
+.choseAdressMs .cam-info .ci-user {
+      height: 60rpx;
+      line-height: 60rpx;
+      font-size: 28rpx;
+}
+.choseAdressMs .cam-info .ci-user .cu-phone {
+        margin-left: 20rpx;
+        font-size: 26rpx;
+        color: #888888;
+}
+.choseAdressMs .cam-info .ci-adress {
+      height: 90rpx;
+      line-height: 45rpx;
+      font-size: 26rpx;
+}
+.choseAdressMs .cam-into {
+    width: 10%;
+    height: 70rpx;
+    text-align: center;
+}
+.choseAdressMs .cam-into image {
+      width: 18rpx;
+      height: 30rpx;
+      margin-top: 20rpx;
+}
+.orderGoods {
+  width: 92%;
+  margin: 0 auto;
+  background-color: #FFFFFF;
+  border-radius: 16rpx;
+}
+.orderGoods .og-store {
+    border-bottom: 1rpx solid #F6F6F6;
+}
+.orderGoods .og-store .os-main {
+      width: 92%;
+      margin: 0 auto;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+}
+.orderGoods .og-store .os-main .om-icon {
+        width: 30rpx;
+        height: 80rpx;
+}
+.orderGoods .og-store .os-main .om-icon image {
+          width: 30rpx;
+          height: 28rpx;
+          margin-top: 26rpx;
+}
+.orderGoods .og-store .os-main .om-name {
+        height: 80rpx;
+        font-size: 26rpx;
+        line-height: 74rpx;
+        margin: 0 16rpx 0 16rpx;
+}
+.orderGoods .og-store .os-main .om-into {
+        width: 16rpx;
+        height: 80rpx;
+}
+.orderGoods .og-store .os-main .om-into image {
+          width: 16rpx;
+          height: 24rpx;
+          margin-top: 27rpx;
+}
+.orderGoods .og-store .os-main .om-left {
+        width: 20%;
+        height: 80rpx;
+        font-size: 26rpx;
+        line-height: 80rpx;
+}
+.orderGoods .og-store .os-main .om-right {
+        width: 70%;
+        height: 80rpx;
+}
+.orderGoods .og-store .os-main .om-right input {
+          width: 100%;
+          height: 100%;
+          font-size: 26rpx;
+}
+.orderGoods .og-store .og-main {
+      height: 180rpx;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+              align-items: center;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+              justify-content: space-between;
+}
+.orderGoods .og-store .og-main .og-image {
+        width: 28%;
+        height: 180rpx;
+        text-align: center;
+}
+.orderGoods .og-store .og-main .og-image image {
+          width: 150rpx;
+          height: 150rpx;
+          border-radius: 10rpx;
+          margin-top: 15rpx;
+}
+.orderGoods .og-store .og-main .og-info {
+        width: 70%;
+        height: 150rpx;
+}
+.orderGoods .og-store .og-main .og-info .oi-name {
+          height: 80rpx;
+          line-height: 40rpx;
+          font-size: 26rpx;
+}
+.orderGoods .og-store .og-main .og-info .oi-price {
+          height: 40rpx;
+          line-height: 40rpx;
+          font-size: 26rpx;
+          color: #FF0000;
+}
+.orderGoods .og-store .og-main .og-info .oi-nums-main {
+          height: 30rpx;
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-box-align: center;
+          -webkit-align-items: center;
+                  align-items: center;
+          -webkit-box-pack: end;
+          -webkit-justify-content: flex-end;
+                  justify-content: flex-end;
+}
+.orderGoods .og-store .og-main .og-info .oi-nums-main .onm-item {
+            width: 40rpx;
+            height: 30rpx;
+            border: 1rpx solid #BBBBBB;
+            font-size: 26rpx;
+            line-height: 30rpx;
+            text-align: center;
+            color: #666666;
+}
+.orderGoods .og-store .og-main .og-info .oi-nums-main .onm-nums {
+            border: none;
+            border-top: 1rpx solid #BBBBBB;
+            border-bottom: 1rpx solid #BBBBBB;
+}
+.orderGoods .og-store .os-item-main {
+      height: 80rpx;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+              align-items: center;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+              justify-content: space-between;
+}
+.orderGoods .og-store .os-item-main .oim-item {
+        font-size: 26rpx;
+        color: #888888;
+}
+.orderGoods .og-store .os-item-main .oim-dis {
+        height: 80rpx;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+                align-items: center;
+}
+.orderGoods .og-store .os-item-main .oim-dis .od-icon {
+          height: 80rpx;
+          margin-left: 16rpx;
+}
+.orderGoods .og-store .os-item-main .oim-dis .od-icon image {
+            width: 16rpx;
+            height: 24rpx;
+            margin-top: 29rpx;
+}
+.orderGoods .og-store .os-item-main .oim-image {
+        height: 80rpx;
+}
+.orderGoods .og-store .os-item-main .oim-image image {
+          width: 32rpx;
+          height: 32rpx;
+          margin-top: 24rpx;
+}
+.orderGoods .og-store .os-bom {
+      height: 80rpx;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+              align-items: center;
+      -webkit-box-pack: end;
+      -webkit-justify-content: flex-end;
+              justify-content: flex-end;
+      font-size: 28rpx;
+}
+.orderGoods .og-store .os-bom .ob-nums {
+        margin-right: 20rpx;
+}
+.orderGoods .og-store .os-bom .ob-price .op-price {
+        color: #FF0000;
+        margin-left: 10rpx;
+}
+.bomMsSpace {
+  height: 100rpx;
+}
+.bomMs {
+  width: 100%;
+  height: 100rpx;
+  background-color: #FFFFFF;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 9;
+}
+.bomMs .bm-main {
+    width: 90%;
+    height: 100rpx;
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+            justify-content: space-between;
+}
+.bomMs .bm-main .bmm-left {
+      width: 70%;
+      height: 80rpx;
+      line-height: 80rpx;
+      font-size: 28rpx;
+}
+.bomMs .bm-main .bmm-left .bl-nums {
+        margin: 0 30rpx 0 20rpx;
+}
+.bomMs .bm-main .bmm-left .bl-fonts {
+        margin-right: 10rpx;
+}
+.bomMs .bm-main .bmm-left .bl-price {
+        color: #FF0000;
+}
+.bomMs .bm-main .bmm-right {
+      width: 200rpx;
+      height: 70rpx;
+      border-radius: 35rpx;
+      background-color: #FC901E;
+      color: #FFFFFF;
+      text-align: center;
+      line-height: 70rpx;
+      font-size: 28rpx;
+}
+.deliveryMs {
+  height: 600rpx;
+  background-color: #FFFFFF;
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+  position: relative;
+}
+.deliveryMs .dm-title {
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+    font-size: 28rpx;
+}
+.deliveryMs .dm-item-ms {
+    border-bottom: 1rpx solid #F6F6F6;
+}
+.deliveryMs .dm-item-ms .dim-main {
+      width: 90%;
+      height: 90rpx;
+      margin: 0 auto;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+              align-items: center;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+              justify-content: space-between;
+}
+.deliveryMs .dm-item-ms .dim-main .dm-left {
+        font-size: 26rpx;
+}
+.deliveryMs .dm-item-ms .dim-main .dm-right image {
+        width: 32rpx;
+        height: 32rpx;
+}
+.deliveryMs .btnMs {
+    width: 90%;
+    position: absolute;
+    left: 50%;
+    margin-left: -45%;
+    bottom: 20rpx;
+}
+.payMain {
+  height: 600rpx;
+  background-color: #FFFFFF;
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+}
+.payMain .pm-title {
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+    font-size: 28rpx;
+}
+.payMain .pm-price {
+    height: 200rpx;
+    text-align: center;
+    line-height: 180rpx;
+    font-size: 30rpx;
+    border-bottom: 1rpx solid #F6F6F6;
+}
+.payMain .pm-price .pp-price {
+      font-size: 60rpx;
+      font-weight: bold;
+}
+.payMain .pm-pay-item {
+    border-bottom: 1rpx solid #F6F6F6;
+}
+.payMain .pm-pay-item .ppi-main {
+      width: 90%;
+      height: 100rpx;
+      margin: 0 auto;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+              align-items: center;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+              justify-content: space-between;
+}
+.payMain .pm-pay-item .ppi-main .pm-left {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+                align-items: center;
+}
+.payMain .pm-pay-item .ppi-main .pm-left .pl-icon {
+          height: 100rpx;
+}
+.payMain .pm-pay-item .ppi-main .pm-left .pl-icon image {
+            width: 60rpx;
+            height: 60rpx;
+            margin-top: 20rpx;
+}
+.payMain .pm-pay-item .ppi-main .pm-left .pl-fonts {
+          height: 100rpx;
+          font-size: 26rpx;
+          line-height: 100rpx;
+          margin-left: 20rpx;
+}
+.payMain .pm-pay-item .ppi-main .pm-right {
+        height: 100rpx;
+}
+.payMain .pm-pay-item .ppi-main .pm-right image {
+          width: 30rpx;
+          height: 30rpx;
+          margin-top: 35rpx;
+}
+.payMain .btnMs {
+    width: 90%;
+    margin-top: 16rpx;
+}
+

@@ -55,9 +55,53 @@ function buildRequest(baseUrl) {
 	request.prototype.apiVegetablesType = function(params, callBack) {
 		post(baseUrl + '/api/Vegetables/type', params, callBack)
 	}
-	// 商品详情(评论)
+	// 首页商品列表(同城)
+	request.prototype.apiVegetablesRecommendVegetables = function(params, callBack) {
+		post(baseUrl + '/api/vegetables/recommendVegetables', params, callBack)
+	}
+	// 商品详情(同城)
 	request.prototype.apiVegetablesCommodityDetail = function(params, callBack) {
 		post(baseUrl + '/api/vegetables/commodityDetail', params, callBack)
+	}
+	// 加入购物车(同城)
+	request.prototype.shopingCartSave = function(params, callBack) {
+		post(baseUrl + '/shopingcart/save', params, callBack)
+	}
+	// 我的购物车
+	request.prototype.shopingcart = function(params, callBack) {
+		post(baseUrl + '/shopingcart', params, callBack)
+	}
+	// 购物车删除
+	request.prototype.shopingcartDelete = function(params, callBack) {
+		post(baseUrl + '/shopingcart/delete', params, callBack)
+	}
+	// 默认收货地址
+	request.prototype.userAddressDefault = function(params, callBack) {
+		post(baseUrl + '/userAddress/default', params, callBack)
+	}
+	// 购物车提交订单展示
+	request.prototype.shopingcartOrder = function(params, callBack) {
+		post(baseUrl + '/shopingcart/order', params, callBack)
+	}
+	// 购物车提交订单
+	request.prototype.vegetablesOrderSave = function(params, callBack) {
+		post(baseUrl + '/vegetablesOrder/save', params, callBack)
+	}
+	// 店铺分类列表
+	request.prototype.vegetablestype = function(params, callBack) {
+		post(baseUrl + '/vegetablestype', params, callBack)
+	}
+	// 店铺商品列表
+	request.prototype.apiVegetablesUserIndex = function(params, callBack) {
+		post(baseUrl + '/api/vegetables/userIndex', params, callBack)
+	}
+	// 店铺优惠券列表
+	request.prototype.apiUserCouponIndex = function(params, callBack) {
+		post(baseUrl + '/api/user_coupon/index', params, callBack)
+	}
+	// 关注/取消关注店铺
+	request.prototype.apiAttentionAttention = function(params, callBack) {
+		post(baseUrl + '/api/attention/attention', params, callBack)
 	}
 	
 	
@@ -104,6 +148,30 @@ function buildRequest(baseUrl) {
 	// 关注/取消
 	request.prototype.follow = function(params, callBack) {
 		post(baseUrl + '/api/attention/attention', params, callBack)
+	}
+	// 我的收货地址
+	request.prototype.userAddress = function(params, callBack) {
+		post(baseUrl + '/userAddress', params, callBack)
+	}
+	// 添加收货地址
+	request.prototype.userAddressSave = function(params, callBack) {
+		post(baseUrl + '/userAddress/save', params, callBack)
+	}
+	// 单个收货地址信息
+	request.prototype.userAddressRead = function(params, callBack) {
+		post(baseUrl + '/userAddress/read', params, callBack)
+	}
+	// 删除收货地址信息
+	request.prototype.userAddressDelete = function(params, callBack) {
+		post(baseUrl + '/userAddress/delete', params, callBack)
+	}
+	// 修改收货地址信息
+	request.prototype.userAddressUpdate = function(params, callBack) {
+		post(baseUrl + '/userAddress/update', params, callBack)
+	}
+	// 成为商家分类列表
+	request.prototype.shopType = function(params, callBack) {
+		post(baseUrl + '/shoptype', params, callBack)
 	}
 	
 	

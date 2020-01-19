@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "商品详情(同城买菜)",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "head-type-a": "/components/assembly/headTypeA",
+    "uni-popup": "/components/uni-popup/uni-popup"
+  }
+}

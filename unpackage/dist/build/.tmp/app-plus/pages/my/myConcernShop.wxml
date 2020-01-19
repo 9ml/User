@@ -1,0 +1,1 @@
+<view><block wx:for="{{shopArr}}" wx:for-item="value" wx:for-index="index" wx:key="index"><view class="info"><image src="{{value.image}}"></image><text>{{value.name}}</text><view data-event-opts="{{[['tap',[['cancel',['$0'],[[['shopArr','',index,'shop_id']]]]]]]}}" bindtap="__e">取消关注</view></view></block></view>

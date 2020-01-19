@@ -4,24 +4,19 @@
 		<view class="info" v-for="(value,index) in addressArr" :key='index'>
 			<view class="left">
 				<view class="name">{{value.name}}  {{value.phone}}</view>
-				<view class="address">{{value.address}}</view>
+				<view class="address">{{value.province}}{{value.city}}{{value.district}}{{value.address}}</view>
 			</view>
-			<view class="right" @tap="bianji">编辑</view>
+			<view class="right" @tap="myTools.navTo('my/bjMyAddress?adId='+value.id)">编辑</view>
 		</view>
-		
 	</view>
 </template>
 
 <script>
+	var _self;
 	export default{
 		data(){
 			return{
-				addressArr:[
-					{name:'张三',phone:'1569801234',address:'山东省济南市历下区华能路汇能大厦'},
-					{name:'张三',phone:'1569801234',address:'山东省济南市历下区华能路汇能大厦'}
-					
-					
-				]
+				addressArr:[]
 			}
 		},
 		onNavigationBarButtonTap() {
@@ -29,7 +24,26 @@
 				url:'addMyAddress'
 			})
 		},
+		onLoad() {
+			_self = this;
+		},
+		onShow() {
+			_self.getMyAdress();
+		},
 		methods:{
+			// 收货地址
+			getMyAdress(){
+				_self.Api.userAddress({
+					token : uni.getStorageSync('token')
+				},res=>{
+					console.log(res);
+					if(res.code === 1){
+						_self.addressArr = res.data
+					}else{
+						_self.myTools.myShow(res.msg,true);
+					}
+				});
+			},
 			bianji(){
 				uni.navigateTo({
 					url:'bjMyAddress'

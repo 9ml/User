@@ -7,9 +7,9 @@
 					{{k.name}}
 				</view>
 			</view>
-			<view class="sdMain" v-for="(s,s_idx) in resList" :key="s_idx" @click="myTools.navTo('index/home/goodsDetails?goodsId='+s.id)">
+			<view class="sdMain" v-for="(s,s_idx) in resList" :key="s_idx" @click="myTools.navTo('index/buyingVegetables/goodsDetails?goodsId='+s.id)">
 				<view class="sm-image">
-					<image :src="s.images" mode=""></image>
+					<image :src="s.imgShow" mode=""></image>
 				</view>
 				<view class="sm-desc">
 					<view class="sd-name hiddenFonts">
@@ -87,13 +87,16 @@
 					page : _self.page,
 					limit : _self.limit,
 					latitude : _self.latitude,
-					longitude : _self.longitude
+					longitude : _self.longitude,
+					status : 1
 				},res=>{
 					console.log(res);
 					if(res.code === 1){
 						res.data.forEach((i)=>{
-							if(i.images.indexOf('http') === -1){
-								i.images = _self.Api.baseUrl + i.images
+							if(i.images.split(',')[0].indexOf('http') === -1){
+								i.imgShow = _self.Api.baseUrl + i.images.split(',')[0]
+							}else{
+								i.imgShow = i.images.split(',')[0]
 							}
 						})
 						_self.resList = res.data;

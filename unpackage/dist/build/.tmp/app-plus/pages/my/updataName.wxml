@@ -1,0 +1,1 @@
+<view><view class="info"><text>昵称</text><input placeholder="请输入修改的名称" data-event-opts="{{[['input',[['__set_model',['','name','$event',[]]]]]]}}" value="{{name}}" bindinput="__e"/></view></view>

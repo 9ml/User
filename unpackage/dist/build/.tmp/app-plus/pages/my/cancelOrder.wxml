@@ -1,0 +1,1 @@
+<view><view class="content"><view class="title">请选择取消订单的原因</view><block wx:for="{{yyArr}}" wx:for-item="value" wx:for-index="index" wx:key="index"><view data-event-opts="{{[['tap',[['tapyy',[index]]]]]}}" class="info" bindtap="__e"><view class="{{['xuan',current==index?'cur':'']}}"></view><text>{{value.con}}</text></view></block><view class="submit">提交</view></view></view>

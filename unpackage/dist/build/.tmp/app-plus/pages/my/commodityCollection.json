@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "商品收藏",
+  "titleNView": {
+    "buttons": [
+      {
+        "text": "编辑",
+        "width": "auto",
+        "fontSize": "16px"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

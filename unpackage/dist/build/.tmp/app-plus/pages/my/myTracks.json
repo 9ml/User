@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "我的足迹",
+  "titleNView": {
+    "buttons": [
+      {
+        "text": "编辑",
+        "width": "auto",
+        "fontSize": "16px"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

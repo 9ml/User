@@ -1,0 +1,15 @@
+{
+  "navigationBarTitleText": "添加收货地址",
+  "titleNView": {
+    "buttons": [
+      {
+        "text": "保存",
+        "fontSize": "16px",
+        "width": "auto"
+      }
+    ]
+  },
+  "usingComponents": {
+    "w-picker": "/components/w-picker/w-picker"
+  }
+}

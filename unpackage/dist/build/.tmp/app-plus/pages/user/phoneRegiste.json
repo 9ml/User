@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "手机快速注册",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "head-type-a": "/components/assembly/headTypeA",
+    "uni-popup": "/components/uni-popup/uni-popup"
+  }
+}

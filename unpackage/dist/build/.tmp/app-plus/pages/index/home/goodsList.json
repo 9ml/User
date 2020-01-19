@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "商品列表",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "head-type-a": "/components/assembly/headTypeA"
+  }
+}

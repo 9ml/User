@@ -8,8 +8,8 @@
 		</view>
 		<view class="info">
 			<text>店铺类别</text>
-			<picker :value="index" @change="lbchange" :range="catArr">
-				<text>{{ catArr[index] }} 〉</text>
+			<picker :value="index" @change="lbchange" :range="catArr" range-key="name">
+				<text>{{ catArr[index].name }} 〉</text>
 			</picker>
 		</view>
 		<view class="info">
@@ -46,7 +46,7 @@
 			<text>店铺简介</text>
 			<input placeholder="请填写您的店铺简介" v-model="description" />
 		</view>
-		<view class="img" @tap="chooseLogo">
+		<view class="img" @tap="chooseImage(1)">
 			<text>店铺logo</text>
 			<view>
 				<image src="../../static/img_tjto_wykd.png" v-if="islogo == ''"></image>
@@ -57,14 +57,14 @@
 		<view class="img">
 			<text>实名认证</text>
 			<view>
-				<image src="../../static/img_sfzzm_wykd.png" v-if="ispositive == ''" @tap="choosePositive"></image>
+				<image src="../../static/img_sfzzm_wykd.png" v-if="ispositive == ''" @tap="chooseImage(2)"></image>
 				<image v-else :src="ispositive"></image>
-				<image src="../../static/img_sfzfm_wykd.png" v-if="isback == ''" @tap="chooseBack"></image>
+				<image src="../../static/img_sfzfm_wykd.png" v-if="isback == ''" @tap="chooseImage(3)"></image>
 				<image v-else :src="isback"></image>
 			</view>
 			<text class="foot">请上传您的手持身份证照片正反面的照片</text>
 		</view>
-		<view class="img" @tap="chooseLicense">
+		<view class="img" @tap="chooseImage(4)">
 			<text>营业执照</text>
 			<view>
 				<image src="../../static/img_tjto_wykd.png" v-if="islicense == ''"></image>
@@ -104,7 +104,12 @@ export default {
 			isback: '',
 			islicense: '',
 			ischeck: false,
-			catArr: ['农副产品', '蔬菜', '水果'],
+			catArr: [
+				{
+					id : 1,
+					name : '农副产品'
+				},
+			],
 			shop_name: '', //店铺名称
 			type_id: '农副产品', //店铺类型ID
 			coordinate: '117.08629478723311,36.68052242300537', //坐标
@@ -126,53 +131,58 @@ export default {
 	onLoad() {
 		_self = this;
 		// _self.getLocations();
+		_self.getStoreKinds();
 	},
 	methods: {
+		// 获取分类
+		getStoreKinds(){
+			_self.Api.shopType({
+				token : uni.getStorageSync('token')
+			},res=>{
+				console.log(res);
+				if(res.code === 1){
+					_self.catArr = res.data
+				}else{
+					_self.myTools.myShow(res.mag,true);
+				}
+			})
+		},
 		lbchange(e) {
 			this.index = e.target.value;
 			this.type_id = this.index;
 		},
-		chooseLogo() {
+		// 选择
+		chooseImage(types) {
 			uni.chooseImage({
-				count: 1,
-				sourceType: ['album'],
-				name: 'file',
-				success: res => {
-					console.log(res.tempFilePaths[0]);
-					this.islogo = res.tempFilePaths[0];
-				}
+			    count: 1,
+			    sizeType: ['original', 'compressed'],
+			    sourceType: ['album'],
+			    success: (res)=> {
+					_self.upLoadImages(res.tempFilePaths[0],types)
+			    }
 			});
 		},
-		choosePositive() {
-			uni.chooseImage({
-				count: 1,
-				sourceType: ['album', 'camera'],
+		// 上传图片
+		upLoadImages(filePath,types){
+			uni.uploadFile({
+				url: _self.Api.baseUrl+'/upload',
+				filePath: filePath,
 				name: 'file',
-				success: res => {
-					console.log(res.tempFilePaths[0]);
-					this.ispositive = res.tempFilePaths[0];
-				}
-			});
-		},
-		chooseBack() {
-			uni.chooseImage({
-				count: 1,
-				sourceType: ['album', 'camera'],
-				name: 'file',
-				success: res => {
-					console.log(res.tempFilePaths[0]);
-					this.isback = res.tempFilePaths[0];
-				}
-			});
-		},
-		chooseLicense() {
-			uni.chooseImage({
-				count: 1,
-				sourceType: ['album', 'camera'],
-				name: 'file',
-				success: res => {
-					console.log(res.tempFilePaths[0]);
-					this.islicense = res.tempFilePaths[0];
+				formData: {
+					token: uni.getStorageSync('token')
+				},
+				success: (uploadFileRes) => {
+					let getInfo = JSON.parse(uploadFileRes.data);
+					_self.myTools.myShow(getInfo.msg,true);
+					if(types === 1){
+						this.islogo = _self.Api.baseUrl + getInfo.data[0].url
+					}else if(types === 2){
+						this.ispositive = _self.Api.baseUrl + getInfo.data[0].url
+					}else if(types === 3){
+						this.isback = _self.Api.baseUrl + getInfo.data[0].url
+					}else if(types === 4){
+						this.islicense = _self.Api.baseUrl + getInfo.data[0].url
+					}
 				}
 			});
 		},
@@ -217,7 +227,7 @@ export default {
 			_self.Api.shopappSave(
 				{
 					shop_name: _self.shop_name,
-					type_id: _self.type_id,
+					type_id: _self.catArr[_self.index].id,
 					coordinate: _self.coordinate,
 					address: _self.address,
 					province: _self.province,
@@ -236,10 +246,12 @@ export default {
 				res => {
 					console.log(res);
 					if (res.code == 1) {
-						uni.showToast({
-							title: '提交成功,等待审核',
-							icon: 'none'
-						});
+						_self.myTools.myShow("提交成功，请等待审核",true);
+						setTimeout(()=>{
+							_self.myTools.navBack();
+						},1500);
+					}else{
+						_self.myTools.myShow(res.msg,true);
 					}
 				}
 			);

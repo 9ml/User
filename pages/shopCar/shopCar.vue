@@ -7,8 +7,8 @@
 				<view class="ha-name">
 					购物车
 				</view>
-				<view class="ha-right" @tap="showAdd()">
-					编辑
+				<view class="ha-right" @tap="updateCar(updateFonts)">
+					{{updateFonts}}
 				</view>
 			</view>
 		</view>
@@ -23,19 +23,19 @@
 					<image src="/static/icon/icon_dp_tjdd.png" mode=""></image>
 				</view>
 				<view class="is-store-name">
-					{{s.storeName}}
+					{{s.shop_name}}
 				</view>
 				<view class="is-into-icon">
 					<image src="/static/icon/btn_enter_spxq.png" mode=""></image>
 				</view>
 			</view>
-			<view class="imMs im-goods" v-for="(g,g_idx) in s.goodsList" :key="g_idx">
+			<view class="imMs im-goods" v-for="(g,g_idx) in s.data" :key="g_idx">
 				<view class="im-chose-icon" @click="choseGoods(s,g)">
 					<image v-if="g.goodsChose" src="/static/icon/icon_xz_zylm.png" mode=""></image>
 					<image v-else src="/static/icon/icon_wxz_zylm.png" mode=""></image>
 				</view>
 				<view class="ig-goods-image">
-					<image :src="g.image" mode=""></image>
+					<image :src="g.images" mode=""></image>
 				</view>
 				<view class="ig-goods-info">
 					<view class="igi-name hiddenFonts">
@@ -50,7 +50,7 @@
 								-
 							</view>
 							<view class="onm-item onm-nums">
-								{{g.nums}}
+								{{g.num}}
 							</view>
 							<view class="onm-item" @click="changeCount(g,1)">
 								+
@@ -72,11 +72,11 @@
 						全选
 					</view>
 				</view>
-				<view class="bm-middle">
+				<view class="bm-middle" v-if="handleFonts === '结算'">
 					合计：<text class="bm-price">￥{{allPrice}}</text>
 				</view>
-				<view class="bm-right">
-					结算
+				<view class="bm-right" @click="settlement(handleFonts)">
+					{{handleFonts}}
 				</view>
 			</view>
 		</view>
@@ -132,11 +132,17 @@
 				// 总价格
 				allPrice: 0,
 				//被选中的产品数量
-				allCount: 0
+				allCount: 0,
+				updateFonts : '编辑',
+				handleFonts : '结算'
 			}
 		},
 		onLoad() {
 			_self = this;
+		},
+		onShow() {
+			_self.getMyShoppingCar();
+			_self.isCheckAll = false
 		},
 		watch: {
 			dataList: {
@@ -148,17 +154,114 @@
 			}
 		},
 		methods: {
+			// 获取购物车
+			getMyShoppingCar(){
+				_self.Api.shopingcart({
+					token : uni.getStorageSync('token')
+				},res=>{
+					console.log(res);
+					if(res.code === 1){
+						res.data.forEach((i)=>{
+							i.storeChose = false
+							i.checkedCount = 0
+							i.data.forEach((j)=>{
+								if(!j.images){}else{
+									if(j.images.split(',')[0].indexOf('http') === -1){
+										j.images = _self.Api.baseUrl + j.images.split(',')[0]
+									}else{
+										j.images = j.images.split(',')[0]
+									}
+								}
+								j.goodsChose = false
+							})
+						});
+						_self.dataList = res.data
+					}else{
+						_self.myTools.myShow(res.msg,true);
+					}
+				})
+			},
+			// 结算
+			settlement(fonts){
+				if(fonts === '结算'){
+					var getGoodsIdsAA = []
+					var getGoodsIdsAB = []
+					_self.dataList.forEach((i)=>{
+						i.data.forEach((j)=>{
+							if(j.goodsChose){
+								getGoodsIdsAA.push(j.goods_id);
+								getGoodsIdsAB.push({
+									id : j.goods_id,
+									num : j.num
+								});
+							}
+						});
+					});
+					if(getGoodsIdsAA.length === 0){
+						_self.myTools.myShow('请选中要购买的商品哦~');
+					}else{
+						uni.navigateTo({
+							url:'/pages/index/buyingVegetables/confirmOrderShopCar?carIds='+JSON.stringify(getGoodsIdsAA)+'&nums='+JSON.stringify(getGoodsIdsAB)
+						});
+					}
+				}else if(fonts === '删除'){
+					uni.showModal({
+					    title: '提示',
+					    content: '确定删除吗？',
+					    success:(res)=>{
+					        if(res.confirm){
+								var getGoodsIdsB = []
+								_self.dataList.forEach((i)=>{
+									i.data.forEach((j)=>{
+										if(j.goodsChose){
+											getGoodsIdsB.push(j.id);
+										}
+									});
+								});
+								if(getGoodsIdsB.length === 0){
+									_self.myTools.myShow('请选中要删除的商品');
+								}else{
+									_self.Api.shopingcartDelete({
+										ids : JSON.stringify(getGoodsIdsB),
+										token : uni.getStorageSync('token')
+									},res=>{
+										console.log(res);
+										if(res.code === 1){
+											_self.myTools.myShow('删除成功',true);
+											_self.getMyShoppingCar();
+										}else{
+											_self.myTools.myShow(res.msg,true);
+										}
+									});
+								}
+					        } else if (res.cancel) {
+					            console.log('用户点击取消');
+					        }
+					    }
+					});
+				}
+			},
+			// 编辑
+			updateCar(fonts){
+				if(fonts === '编辑'){
+					_self.updateFonts = '完成'
+					_self.handleFonts = '删除'
+				}else{
+					_self.updateFonts = '编辑'
+					_self.handleFonts = '结算'
+				}
+			},
 			// 选择店铺
 			choseStore(list) {
 				!list.storeChose ? _self._shopTrue(list) : _self._shopFalse(list)
 			},
 			_shopTrue(list) {
-				list.goodsList.forEach((item) => {
+				list.data.forEach((item) => {
 					item.goodsChose === false ? _self._checkTrue(list, item) : ''
 				});
 			},
 			_shopFalse(list) {
-				list.goodsList.forEach((item) => {
+				list.data.forEach((item) => {
 					item.goodsChose === true ? _self._checkFalse(list, item) : ''
 				});
 			},
@@ -168,7 +271,7 @@
 			},
 			_checkTrue(list, item) {
 				item.goodsChose = true
-				++ list.checkedCount === list.goodsList.length ? list.storeChose = true : ''
+				++ list.checkedCount === list.data.length ? list.storeChose = true : ''
 				list.storeChose ? ++_self.allShops === _self.dataList.length ? _self.isCheckAll = true : _self.isCheckAll = false : ''
 			},
 			_checkFalse(list, item) {
@@ -194,10 +297,10 @@
 			// 购物车加减
 			changeCount(item,type){
 				if(type > 0){
-					item.nums ++
+					item.num ++
 				}else{
-					if(item.nums === 1){}else{
-						item.nums --
+					if(item.num === 1){}else{
+						item.num --
 					}
 				}
 			},
@@ -205,19 +308,19 @@
 			_totalPrice() {
 				_self.allPrice = 0
 				_self.dataList.forEach((list) => {
-					list.goodsList.forEach((item) => {
+					list.data.forEach((item) => {
 						if (item.goodsChose) {
-							_self.allPrice += Number(item.price) * Number(item.nums)
+							_self.allPrice += Number(item.price) * Number(item.num);
 						}
-					})
-				})
+					});
+				});
 			},
 			// 数量
 			_totalCount() {
 				_self.allCount = 0
 				_self.dataList.forEach((list) => {
 					_self.allCount += list.checkedCount
-				})
+				});
 			}
 		}
 	}
@@ -397,9 +500,10 @@
 		height: 100rpx;
 		position: fixed;
 		left: 0;
-		bottom: 0;
+		bottom: 100rpx;
+		// border: 1rpx solid #000000;
 		background-color: #FFFFFF;
-		z-index: 9;
+		z-index: 99;
 
 		.bm-main {
 			width: 92%;

@@ -18,7 +18,7 @@
 				<view class="sm-into-store">
 					<image src="/static/icon/btn_enter_dp.png" mode=""></image>
 				</view>
-				<view class="st-follow">
+				<view class="st-follow" @click="followStore()">
 					<view class="sf-icon">
 						<image src="/static/icon/icon_tj_dp.png" mode=""></image>
 					</view>
@@ -26,20 +26,14 @@
 						关注
 					</view>
 				</view>
-				<view class="st-follow">
+				<view class="st-follow" @click="openPopup('share')">
 					分享
 				</view>
 			</view>
 			<view class="sm-discount">
 				<view class="sd-left">
-					<view class="sl-item">
-						30减5
-					</view>
-					<view class="sl-item">
-						50减5
-					</view>
-					<view class="sl-item">
-						100减10
+					<view class="sl-item" v-for="(d,d_idx) in discountList" :key="d_idx" @click="openPopup('coupon')">
+						{{d.name}}
 					</view>
 				</view>
 				<view class="sd-right">
@@ -66,14 +60,14 @@
 		<view class="storeMain">
 			<view class="sm-left-space"></view>
 			<view class="sm-left">
-				<view class="sl-item-kinds hiddenFontsA" v-for="(l,l_idx) in leftKindsList" :key="l_idx" :class="[lkCurrent === l_idx ? 'lk-ac' : '']" @tap="choseLK(l_idx)">
+				<view class="sl-item-kinds hiddenFontsA" v-for="(l,l_idx) in leftKindsList" :key="l_idx" :class="[lkCurrent === l_idx ? 'lk-ac' : '']" @tap="choseLK(l_idx,l.id)">
 					{{l.name}}
 				</view>
 			</view>
 			<view class="sm-right">
 				<view class="sr-item" v-for="(g,g_idx) in goodsList" :key="g_idx">
 					<view class="si-image">
-						<image :src="g.image" mode=""></image>
+						<image :src="g.imgShow" mode=""></image>
 					</view>
 					<view class="si-infos">
 						<view class="sii-name hiddenFonts">
@@ -82,13 +76,13 @@
 						<view class="sii-main">
 							<view class="sm-left-info">
 								<view class="sli-self">
-									{{g.nums}}人付款
+									{{g.sales}}人付款
 								</view>
 								<view class="sli-price">
-									<text class="sp-price">￥{{g.price}}</text>/{{g.weight}}克
+									<text class="sp-price">￥{{g.price}}</text>/{{g.company}}
 								</view>
 							</view>
-							<view class="sm-right-icon" @tap="showCoupon()">
+							<view class="sm-right-icon">
 								<image src="/static/icon/icon_tj_zbz.png" mode=""></image>
 							</view>
 						</view>
@@ -127,8 +121,37 @@
 						</view>
 					</view>
 				</view>
-				<view class="btnMs">
+				<view class="btnMs" @click="closePopup('coupon')">
 					确定
+				</view>
+			</view>
+		</uni-popup>
+		<!-- 分享 -->
+		<uni-popup ref="share" type="bottom" :custom="true">
+			<view class="shareMs">
+				<view class="sm-title">
+					分享
+				</view>
+				<view class="sm-kinds">
+					<view class="sk-item">
+						<view class="si-icon">
+							<image src="/static/icon/icon_wxhy_fx.png" mode=""></image>
+						</view>
+						<view class="si-name">
+							微信好友
+						</view>
+					</view>
+					<view class="sk-item">
+						<view class="si-icon">
+							<image src="/static/icon/icon_pyq_fx.png" mode=""></image>
+						</view>
+						<view class="si-name">
+							朋友圈
+						</view>
+					</view>
+				</view>
+				<view class="sm-bom" @click="closePopup('share')">
+					取消
 				</view>
 			</view>
 		</uni-popup>
@@ -156,79 +179,11 @@
 					}
 				],
 				tabCurrent : 0,
-				leftKindsList : [
-					{
-						name : '水果拼团'
-					},
-					{
-						name : '新鲜水果'
-					},
-					{
-						name : '特产'
-					},
-					{
-						name : '饮料'
-					}
-				],
+				leftKindsList : [],
 				lkCurrent : 0,
-				goodsList : [
-					{
-						image : '/static/images/img_14_sy.png',
-						name : '橙子新鲜脐橙归伦晚夏橙5斤当季水果橙子新鲜脐橙归伦晚夏橙橙子新鲜脐橙归伦晚夏橙',
-						nums : 66,
-						price : 19,
-						weight : 20
-					},
-					{
-						image : '/static/images/img_14_sy.png',
-						name : '橙子新鲜脐橙归伦晚夏橙5斤当季水果橙子新鲜脐橙归伦晚夏橙橙子新鲜脐橙归伦晚夏橙',
-						nums : 66,
-						price : 19,
-						weight : 20
-					},
-					{
-						image : '/static/images/img_14_sy.png',
-						name : '橙子新鲜脐橙归伦晚夏橙5斤当季水果橙子新鲜脐橙归伦晚夏橙橙子新鲜脐橙归伦晚夏橙',
-						nums : 66,
-						price : 19,
-						weight : 20
-					},
-					{
-						image : '/static/images/img_14_sy.png',
-						name : '橙子新鲜脐橙归伦晚夏橙5斤当季水果橙子新鲜脐橙归伦晚夏橙橙子新鲜脐橙归伦晚夏橙',
-						nums : 66,
-						price : 19,
-						weight : 20
-					},
-					{
-						image : '/static/images/img_14_sy.png',
-						name : '橙子新鲜脐橙归伦晚夏橙5斤当季水果橙子新鲜脐橙归伦晚夏橙橙子新鲜脐橙归伦晚夏橙',
-						nums : 66,
-						price : 19,
-						weight : 20
-					},
-					{
-						image : '/static/images/img_14_sy.png',
-						name : '橙子新鲜脐橙归伦晚夏橙5斤当季水果橙子新鲜脐橙归伦晚夏橙橙子新鲜脐橙归伦晚夏橙',
-						nums : 66,
-						price : 19,
-						weight : 20
-					},
-					{
-						image : '/static/images/img_14_sy.png',
-						name : '橙子新鲜脐橙归伦晚夏橙5斤当季水果橙子新鲜脐橙归伦晚夏橙橙子新鲜脐橙归伦晚夏橙',
-						nums : 66,
-						price : 19,
-						weight : 20
-					},
-					{
-						image : '/static/images/img_14_sy.png',
-						name : '橙子新鲜脐橙归伦晚夏橙5斤当季水果橙子新鲜脐橙归伦晚夏橙橙子新鲜脐橙归伦晚夏橙',
-						nums : 66,
-						price : 19,
-						weight : 20
-					}
-				],
+				// 商品列表
+				goodsList : [],
+				// 优惠券列表
 				couponList : [
 					{
 						isHave : true,
@@ -258,21 +213,105 @@
 						type : '店铺优惠券',
 						time : '2019.8.1 00:00 - 2019.8.1 23:59'
 					}
-				]
+				],
+				// 优惠活动
+				discountList : [
+					{
+						name : '30减5'
+					},
+					{
+						name : '30减5'
+					},
+					{
+						name : '30减5'
+					}
+				],
+				page : 0,
+				limit : 5,
 			}
 		},
-		onLoad() {
+		onLoad(options) {
 			_self = this;
+			_self.storeId = options.storeId
+			_self.getStoreKinds();
+			_self.getCouponList();
 		},
 		methods: {
+			// 获取分类
+			getStoreKinds(){
+				_self.Api.vegetablestype({
+					id : _self.storeId
+				},res=>{
+					console.log(res);
+					if(res.code === 1){
+						_self.leftKindsList = res.data
+						_self.getStoreGoodsList(_self.leftKindsList[_self.lkCurrent].id,_self.tabCurrent);
+					}else{
+						_self.myTools.myShow(res.msg,true);
+					}
+				});
+			},
+			// 获取商品列表
+			getStoreGoodsList(typeId,types){
+				_self.Api.apiVegetablesUserIndex({
+					page : _self.page,
+					limit : _self.limit,
+					type_id : typeId,
+					status : 1,
+					business_id : _self.storeId,
+					sort : 0,
+					type : types
+				},res=>{
+					console.log(res);
+					if(res.code === 1){
+						res.data.forEach((i)=>{
+							if(i.images.split(',')[0].indexOf('http') === -1){
+								i.imgShow = _self.Api.baseUrl + i.images.split(',')[0]
+							}else{
+								i.imgShow = i.images.split(',')[0]
+							}
+						});
+						_self.goodsList = res.data;
+					}else if(res.code === 2){
+						_self.goodsList = []
+						_self.myTools.myShow(res.msg,true);
+					}else{
+						_self.myTools.myShow(res.msg,true);
+					}
+				});
+			},
+			// 获取优惠券类别
+			getCouponList(){
+				_self.Api.apiUserCouponIndex({
+					id : _self.storeId,
+					token : uni.getStorageSync('token')
+				},res=>{
+					console.log(res);
+				});
+			},
+			// 关注 / 取消关注
+			followStore(){
+				_self.Api.apiAttentionAttention({
+					shop_id : _self.storeId,
+					anchor_id : 0,
+					token : uni.getStorageSync('token')
+ 				},res=>{
+					console.log(res);
+				})
+			},
 			choseTab(idx){
 				_self.tabCurrent = idx
+				_self.getStoreGoodsList(_self.leftKindsList[_self.lkCurrent].id,idx);
 			},
-			choseLK(idx){
+			choseLK(idx,typesId){
 				_self.lkCurrent = idx
+				_self.getStoreGoodsList(typesId,_self.tabCurrent);
 			},
-			showCoupon(){
-				_self.$refs.coupon.open();
+			openPopup(types){
+				_self.$refs[types].open();
+			},
+			closePopup(types){
+				_self.$refs[types].close();
 			},
 			receiveCoupon(idx){
 				_self.couponList[idx].isHave = true
@@ -629,6 +668,55 @@
 		.btnMs{
 			width: 90%;
 			margin-top: 20rpx;
+		}
+	}
+	.shareMs{
+		height: 360rpx;
+		background-color: #FFFFFF;
+		border-top-left-radius: 20rpx;
+		border-top-right-radius: 20rpx;
+		.sm-title{
+			height: 100rpx;
+			line-height: 100rpx;
+			text-align: center;
+			font-size: 28rpx;
+		}
+		.sm-kinds{
+			width: 400rpx;
+			height: 180rpx;
+			margin: 0 auto;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			.sk-item{
+				width: 110rpx;
+				height: 120rpx;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex-wrap: wrap;
+				.si-icon{
+					height: 70rpx;
+					image{
+						width: 70rpx;
+						height: 70rpx;
+					}
+				}
+				.si-name{
+					height: 50rpx;
+					line-height: 50rpx;
+					text-align: center;
+					font-size: 24rpx;
+				}
+			}
+		}
+		.sm-bom{
+			width: 750rpx;
+			height: 90rpx;
+			border: 1rpx solid #EAEAEA;
+			line-height: 90rpx;
+			text-align: center;
+			font-size: 26rpx;
 		}
 	}
 </style>

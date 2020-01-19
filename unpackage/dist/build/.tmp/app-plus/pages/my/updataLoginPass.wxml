@@ -1,0 +1,1 @@
+<view><view class="form"><text>旧密码</text><input placeholder="请输入旧密码"/></view><view class="form"><text>新密码</text><input placeholder="请输入新密码"/></view><view class="form"><text>确认密码</text><input placeholder="请再次输入密码"/></view><view class="submit">确定</view></view>

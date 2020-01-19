@@ -1,0 +1,1 @@
+<view><view class="info"><image src="/static/icon_yiyuehuan_dhcg.png"></image><view>已兑换</view></view><view data-event-opts="{{[['tap',[['back',['$event']]]]]}}" class="submit" bindtap="__e">继续兑换商品</view></view>

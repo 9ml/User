@@ -1,0 +1,1 @@
+<view><view class="top"><image src="../../static/img_1_wl.png"></image><view class="right"><view class="title">中通快递</view><view class="num">运单号：1234567990</view></view></view><view class="info"><uni-steps vue-id="1" options="{{list}}" active="{{active}}" direction="column" bind:__l="__l"></uni-steps></view></view>

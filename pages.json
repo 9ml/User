@@ -8,7 +8,7 @@
 			}
 		},
 		{
-		    "path" : "pages/index/live/liveBroadcast",
+		    "path" : "pages/index/home/liveBroadcast",
 		    "style" : {
 				"navigationBarTitleText":"直播",
 				"navigationStyle": "custom"
@@ -18,6 +18,20 @@
 		    "path" : "pages/user/phoneRegiste",
 		    "style" : {
 				"navigationBarTitleText":"手机快速注册",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+		    "path" : "pages/index/buyingVegetables/goodsDetails",
+		    "style" : {
+				"navigationBarTitleText":"商品详情(同城买菜)",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+		    "path" : "pages/index/buyingVegetables/confirmOrderShopCar",
+		    "style" : {
+				"navigationBarTitleText":"订单提交(同城买菜-购物车)",
 				"navigationStyle": "custom"
 			}
 		},
@@ -470,15 +484,15 @@
 				}
 			}
 		},
-		// {
-		// 	"path": "pages/index/home/productVideo",
-		// 	"style": {
-		// 		"navigationBarTitleText": "产品视频",
-		// 		"app-plus":{
-		// 			"titleNView":false
-		// 		}
-		// 	}
-		// },
+		{
+			"path": "pages/index/home/productVideo",
+			"style": {
+				"navigationBarTitleText": "产品视频",
+				"app-plus":{
+					"titleNView":false
+				}
+			}
+		},
 		{
 			"path": "pages/index/crowdFunding/crowdFundingPost",
 			"style": {
